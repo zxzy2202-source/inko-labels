@@ -13,7 +13,7 @@ export default function WhatsAppFloat() {
           <div className="flex items-center justify-between mb-3">
             <div>
               <div className="font-bold text-[#0F2744] text-sm">WeChat</div>
-              <div className="text-xs text-gray-500">Scan to add us on WeChat</div>
+              <div className="text-xs text-gray-500">Add us on WeChat</div>
             </div>
             <button onClick={() => setWechatOpen(false)} className="text-gray-400 hover:text-gray-600 transition-colors"><X className="w-4 h-4" /></button>
           </div>
@@ -21,17 +21,11 @@ export default function WhatsAppFloat() {
             <div className="text-center">
               <div className="text-4xl mb-2">📱</div>
               <div className="text-xs text-gray-500">WeChat ID:</div>
-              <div className="font-bold text-[#0F2744] text-sm">INKO_Labels</div>
+              <div className="font-bold text-[#0F2744] text-sm">lgt2202</div>
             </div>
           </div>
         </div>
       )}
-
-      {/* Skype */}
-      <a href="skype:inkolabels?chat" title="Chat on Skype"
-        className="w-12 h-12 rounded-full bg-[#00aff0] hover:bg-[#0099d4] text-white flex items-center justify-center shadow-lg hover:scale-110 transition-all duration-200">
-        <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current"><path d="M12.069 18.874c-4.023 0-5.82-1.979-5.82-3.464 0-.765.561-1.296 1.333-1.296 1.723 0 1.273 2.477 4.487 2.477 1.641 0 2.55-.895 2.55-1.811 0-.551-.269-1.16-1.354-1.429l-3.576-.895c-2.88-.724-3.403-2.286-3.403-3.751 0-3.047 2.861-4.191 5.549-4.191 2.471 0 5.393 1.373 5.393 3.199 0 .784-.688 1.24-1.453 1.24-1.469 0-1.198-2.037-4.164-2.037-1.469 0-2.292.664-2.292 1.617s1.153 1.258 2.157 1.487l2.637.587c2.891.649 3.624 2.346 3.624 3.944 0 2.476-1.902 4.324-5.668 4.324m9.931-5.049a9.864 9.864 0 0 0 .093-1.354c0-5.273-4.612-9.538-10.302-9.538a10.56 10.56 0 0 0-1.792.154A5.897 5.897 0 0 0 6.467 2C3.453 2 1 4.453 1 7.467c0 1.199.366 2.308.986 3.225a9.865 9.865 0 0 0-.112 1.457c0 5.273 4.577 9.538 10.267 9.538.677 0 1.338-.065 1.981-.185A5.852 5.852 0 0 0 17.533 22C20.547 22 23 19.547 23 16.533c0-1.109-.32-2.143-.877-3.012" /></svg>
-      </a>
 
       {/* WeChat */}
       <button onClick={() => setWechatOpen(!wechatOpen)} title="WeChat"
@@ -42,7 +36,7 @@ export default function WhatsAppFloat() {
       {/* WhatsApp */}
       <div className="relative">
         <div className="absolute inset-0 rounded-full bg-[#25d366] animate-ping opacity-40" />
-        <a href="https://wa.me/8613900000000?text=Hello%20INKO%20Custom%20Labels%2C%20I%27m%20interested%20in%20your%20label%20products.%20Could%20you%20please%20send%20me%20a%20quote%3F"
+        <a href="https://wa.me/8613572821237?text=Hello%20INKO%20Custom%20Labels%2C%20I%27m%20interested%20in%20your%20label%20products.%20Could%20you%20please%20send%20me%20a%20quote%3F"
           target="_blank" rel="noopener noreferrer" title="Chat on WhatsApp"
           className="relative w-14 h-14 rounded-full bg-[#25d366] hover:bg-[#20bd5a] text-white flex items-center justify-center shadow-xl hover:scale-110 transition-all duration-200">
           <MessageCircle className="w-7 h-7" />
@@ -51,4 +45,3 @@ export default function WhatsAppFloat() {
     </div>
   );
 }
-

@@ -58,6 +58,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/es`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.95 },
     { url: `${BASE_URL}/es/products`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.85 },
     { url: `${BASE_URL}/es/about`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE_URL}/es/blog`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
     { url: `${BASE_URL}/es/contact`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.85 },
   ];
 
@@ -98,6 +99,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }));
 
+  // ── Spanish (/es) blog pages ─────────────────────────────────────────────
+  const esBlogSlugs = [
+    "como-elegir-el-material-de-etiqueta",
+    "estampado-en-caliente-vs-tinta-metalica",
+    "requisitos-etiquetas-cosmeticas",
+    "guia-impresion-etiquetas-bajo-moq",
+    "consejos-diseno-etiquetas-alimentos-mascotas",
+  ];
+  const esBlogPages: MetadataRoute.Sitemap = esBlogSlugs.map((slug) => ({
+    url: `${BASE_URL}/es/blog/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.65,
+  }));
+
   return [
     ...staticPages,
     ...esStaticPages,
@@ -106,5 +122,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...capabilityPages,
     ...blogPages,
     ...esProductPages,
+    ...esBlogPages,
   ];
 }

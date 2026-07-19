@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { CheckCircle2, ChevronRight, Award, Globe, Users, Factory } from "lucide-react";
+import { CheckCircle2, ChevronRight, Award, Globe, Users, Factory, Layers, Zap, Shield, Package } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "About INKO Custom Labels — B2B Label Manufacturer Xi'an China",
@@ -67,4 +67,3 @@ export default function AboutPage() {
     </>
   );
 }
-import { CheckCircle2, ChevronRight, Award, Globe, Users, Factory, Layers, Zap, Shield, Package } from "lucide-react";

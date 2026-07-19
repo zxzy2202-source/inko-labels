@@ -11,6 +11,7 @@ import {
   TrendingUp, Printer, Palette, Scissors, Star, Droplet, Snowflake,
   AlertTriangle, BarChart2, Repeat, MonitorPlay, Flame,
 } from "lucide-react";
+import { Camera } from "lucide-react";
 
 const languages = [
   { code: "en", label: "English",   flag: "🇺🇸", region: "Global" },
@@ -221,7 +222,12 @@ export default function Navbar() {
                   <MenuCol title="Finishing" items={finishing} onClose={close} />
                 </div>
                 <div className="mt-4 pt-3 border-t border-gray-100">
-                  <Link href="/about" onClick={close} className="flex items-center gap-1.5 text-[#0F2744] font-semibold text-sm hover:text-[#E8A020] transition-colors">About Our Factory <ChevronRight className="w-3.5 h-3.5" /></Link>
+                  <div className="flex items-center justify-between">
+                    <Link href="/capabilities" onClick={close} className="flex items-center gap-1.5 text-[#0F2744] font-semibold text-sm hover:text-[#E8A020] transition-colors">
+                      <Camera className="w-3.5 h-3.5" /> View All Equipment &amp; Videos <ChevronRight className="w-3.5 h-3.5" />
+                    </Link>
+                    <Link href="/about" onClick={close} className="flex items-center gap-1.5 text-gray-400 text-xs hover:text-[#E8A020] transition-colors">About Factory</Link>
+                  </div>
                 </div>
               </Drop>
             </div>

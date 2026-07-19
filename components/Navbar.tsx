@@ -233,6 +233,7 @@ export default function Navbar() {
             </div>
 
             <Link href="/about" className="text-white/80 hover:text-[#E8A020] text-sm font-medium tracking-wide uppercase transition-colors duration-200">About</Link>
+            <Link href="/blog" className="text-white/80 hover:text-[#E8A020] text-sm font-medium tracking-wide uppercase transition-colors duration-200">Blog</Link>
             <Link href="/contact" className="text-white/80 hover:text-[#E8A020] text-sm font-medium tracking-wide uppercase transition-colors duration-200">Contact</Link>
           </nav>
 

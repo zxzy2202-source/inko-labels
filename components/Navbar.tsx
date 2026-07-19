@@ -184,7 +184,7 @@ export default function Navbar() {
 
           {/* Desktop nav */}
           <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
-            <Link href={localePath("/")} className={`text-sm font-medium tracking-wide uppercase transition-colors duration-200 ${isHome ? "text-[#E8A020]" : "text-white/80 hover:text-[#E8A020]"}`}>Home</Link>
+            <Link href={localePath("/")} className={`text-sm font-medium tracking-wide uppercase transition-colors duration-200 ${isHome ? "text-[#E8A020]" : "text-white/80 hover:text-[#E8A020]"}`}>{t.nav.home}</Link>
 
             {/* Products */}
             <div className="relative">
@@ -193,13 +193,13 @@ export default function Navbar() {
               </button>
               <Drop open={active === "products"} width="860px">
                 <div className="grid grid-cols-3 gap-5">
-                  <MenuCol title="By Industry" items={industries} onClose={close} />
-                  <MenuCol title="By Material" items={materials} onClose={close} />
-                  <MenuCol title="Performance & Specialty" items={performance} onClose={close} />
+                  <MenuCol title={t.nav.byIndustry} items={industries} onClose={close} />
+                  <MenuCol title={t.nav.byMaterial} items={materials} onClose={close} />
+                  <MenuCol title={t.nav.performanceSpecialty} items={performance} onClose={close} />
                 </div>
                 <div className="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between">
-                  <span className="text-gray-400 text-xs">40+ label types for global B2B buyers</span>
-                  <Link href={localePath("/products")} onClick={close} className="flex items-center gap-1.5 text-[#0F2744] font-semibold text-sm hover:text-[#E8A020] transition-colors">View All Products <ChevronRight className="w-3.5 h-3.5" /></Link>
+                  <span className="text-gray-400 text-xs">{t.nav.labelTypesTagline}</span>
+                  <Link href={localePath("/products")} onClick={close} className="flex items-center gap-1.5 text-[#0F2744] font-semibold text-sm hover:text-[#E8A020] transition-colors">{t.nav.viewAllProducts} <ChevronRight className="w-3.5 h-3.5" /></Link>
                 </div>
               </Drop>
             </div>
@@ -211,8 +211,8 @@ export default function Navbar() {
               </button>
               <Drop open={active === "solutions"} width="580px">
                 <div className="grid grid-cols-2 gap-5">
-                  <MenuCol title="By Buyer Type" items={solutionsByBuyer} onClose={close} />
-                  <MenuCol title="By Sourcing Need" items={solutionsBySourcing} onClose={close} />
+                  <MenuCol title={t.nav.byBuyerType} items={solutionsByBuyer} onClose={close} />
+                  <MenuCol title={t.nav.bySourcingNeed} items={solutionsBySourcing} onClose={close} />
                 </div>
                 <div className="mt-4 pt-3 border-t border-gray-100">
                   <Link href={localePath("/contact")} onClick={close} className="flex items-center gap-1.5 text-[#0F2744] font-semibold text-sm hover:text-[#E8A020] transition-colors">{t.nav.getQuote} <ChevronRight className="w-3.5 h-3.5" /></Link>
@@ -227,15 +227,15 @@ export default function Navbar() {
               </button>
               <Drop open={active === "capabilities"} width="500px">
                 <div className="grid grid-cols-2 gap-5">
-                  <MenuCol title="Printing" items={printing} onClose={close} />
-                  <MenuCol title="Finishing" items={finishing} onClose={close} />
+                  <MenuCol title={t.nav.printing} items={printing} onClose={close} />
+                  <MenuCol title={t.nav.finishing} items={finishing} onClose={close} />
                 </div>
                 <div className="mt-4 pt-3 border-t border-gray-100">
                   <div className="flex items-center justify-between">
                     <Link href={localePath("/capabilities")} onClick={close} className="flex items-center gap-1.5 text-[#0F2744] font-semibold text-sm hover:text-[#E8A020] transition-colors">
-                      <Camera className="w-3.5 h-3.5" /> View All Equipment &amp; Videos <ChevronRight className="w-3.5 h-3.5" />
+                      <Camera className="w-3.5 h-3.5" /> {t.nav.viewAllEquipment} <ChevronRight className="w-3.5 h-3.5" />
                     </Link>
-                    <Link href={localePath("/about")} onClick={close} className="flex items-center gap-1.5 text-gray-400 text-xs hover:text-[#E8A020] transition-colors">About Factory</Link>
+                    <Link href={localePath("/about")} onClick={close} className="flex items-center gap-1.5 text-gray-400 text-xs hover:text-[#E8A020] transition-colors">{t.nav.aboutFactory}</Link>
                   </div>
                 </div>
               </Drop>
@@ -256,7 +256,7 @@ export default function Navbar() {
                 <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${active === "lang" ? "rotate-180" : ""}`} />
               </button>
               <div className={`absolute top-full right-0 mt-2 w-52 bg-white rounded-xl shadow-2xl shadow-black/10 border border-gray-100 py-2 transition-all duration-200 ease-out origin-top-right ${active === "lang" ? "opacity-100 scale-100 translate-y-0 pointer-events-auto" : "opacity-0 scale-95 -translate-y-2 pointer-events-none"}`}>
-                <div className="px-3 py-1.5 text-[10px] font-bold text-gray-400 tracking-widest uppercase border-b border-gray-100 mb-1">Select Language</div>
+                <div className="px-3 py-1.5 text-[10px] font-bold text-gray-400 tracking-widest uppercase border-b border-gray-100 mb-1">{t.nav.selectLanguage}</div>
                 {languages.map(l => (
                   <button key={l.code} onClick={() => {
                     const targetPath = l.code === "en" ? (pathWithoutLocale || "/") : `/${l.code}${pathWithoutLocale === "/" ? "" : pathWithoutLocale}`;
@@ -290,8 +290,8 @@ export default function Navbar() {
       {mobileOpen && (
         <div className="lg:hidden bg-[#0F2744] border-t border-white/10 max-h-[80vh] overflow-y-auto">
           <div className="px-4 py-4 space-y-1">
-            <Link href={localePath("/")} className="block text-white/80 hover:text-[#E8A020] py-3 text-base font-medium border-b border-white/10 transition-colors" onClick={() => setMobileOpen(false)}>Home</Link>
-            <div className="text-white/50 text-[10px] uppercase tracking-widest py-2 px-1">Products by Industry</div>
+            <Link href={localePath("/")} className="block text-white/80 hover:text-[#E8A020] py-3 text-base font-medium border-b border-white/10 transition-colors" onClick={() => setMobileOpen(false)}>{t.nav.home}</Link>
+            <div className="text-white/50 text-[10px] uppercase tracking-widest py-2 px-1">{t.nav.productsByIndustry}</div>
             {industries.slice(0, 8).map(item => {
               const Icon = item.icon;
               return (
@@ -300,7 +300,7 @@ export default function Navbar() {
                 </Link>
               );
             })}
-            <Link href={localePath("/products")} className="block text-[#E8A020] font-semibold py-2.5 text-sm border-b border-white/10 transition-colors" onClick={() => setMobileOpen(false)}>View All Products →</Link>
+            <Link href={localePath("/products")} className="block text-[#E8A020] font-semibold py-2.5 text-sm border-b border-white/10 transition-colors" onClick={() => setMobileOpen(false)}>{t.nav.viewAllProducts} →</Link>
             <Link href={localePath("/about")} className="block text-white/80 hover:text-[#E8A020] py-3 text-base font-medium border-b border-white/10 transition-colors" onClick={() => setMobileOpen(false)}>{t.nav.about}</Link>
             <Link href={localePath("/contact")} className="block text-white/80 hover:text-[#E8A020] py-3 text-base font-medium border-b border-white/10 transition-colors" onClick={() => setMobileOpen(false)}>{t.nav.contact}</Link>
             <Link href={localePath("/contact")} className="block mt-4 bg-[#E8A020] text-[#0F2744] font-bold text-center py-3 rounded uppercase tracking-wide" onClick={() => setMobileOpen(false)}>{t.nav.getQuote}</Link>

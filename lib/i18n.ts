@@ -51,6 +51,20 @@ export interface Translations {
     about: string;
     contact: string;
     getQuote: string;
+    home: string;
+    byIndustry: string;
+    byMaterial: string;
+    performanceSpecialty: string;
+    byBuyerType: string;
+    bySourcingNeed: string;
+    printing: string;
+    finishing: string;
+    viewAllProducts: string;
+    viewAllEquipment: string;
+    aboutFactory: string;
+    labelTypesTagline: string;
+    selectLanguage: string;
+    productsByIndustry: string;
   };
 
   // Homepage
@@ -160,6 +174,20 @@ export const translations: Record<Locale, Translations> = {
       about: "About",
       contact: "Contact",
       getQuote: "Get a Quote",
+home: "Home",
+      byIndustry: "By Industry",
+      byMaterial: "By Material",
+      performanceSpecialty: "Performance & Specialty",
+      byBuyerType: "By Buyer Type",
+      bySourcingNeed: "By Sourcing Need",
+      printing: "Printing",
+      finishing: "Finishing",
+      viewAllProducts: "View All Products",
+      viewAllEquipment: "View All Equipment & Videos",
+      aboutFactory: "About Factory",
+      labelTypesTagline: "40+ label types for global B2B buyers",
+      selectLanguage: "Select Language",
+      productsByIndustry: "Products by Industry",
     },
     home: {
       heroTag: "B2B Label Manufacturer · ISO 9001 Certified",
@@ -251,6 +279,20 @@ export const translations: Record<Locale, Translations> = {
       about: "Nosotros",
       contact: "Contacto",
       getQuote: "Solicitar Cotización",
+home: "Inicio",
+      byIndustry: "Por Industria",
+      byMaterial: "Por Material",
+      performanceSpecialty: "Rendimiento y Especialidad",
+      byBuyerType: "Por Tipo de Comprador",
+      bySourcingNeed: "Por Necesidad de Compra",
+      printing: "Impresión",
+      finishing: "Acabados",
+      viewAllProducts: "Ver Todos los Productos",
+      viewAllEquipment: "Ver Todos los Equipos y Videos",
+      aboutFactory: "Sobre la Fábrica",
+      labelTypesTagline: "Más de 40 tipos de etiquetas para compradores B2B",
+      selectLanguage: "Seleccionar Idioma",
+      productsByIndustry: "Productos por Industria",
     },
     home: {
       heroTag: "Fabricante B2B de Etiquetas · Certificado ISO 9001",
@@ -342,6 +384,20 @@ export const translations: Record<Locale, Translations> = {
       about: "À Propos",
       contact: "Contact",
       getQuote: "Demander un Devis",
+home: "Accueil",
+      byIndustry: "Par Industrie",
+      byMaterial: "Par Matériau",
+      performanceSpecialty: "Performance & Spécialité",
+      byBuyerType: "Par Type d'Acheteur",
+      bySourcingNeed: "Par Besoin d'Approvisionnement",
+      printing: "Impression",
+      finishing: "Finition",
+      viewAllProducts: "Voir Tous les Produits",
+      viewAllEquipment: "Voir Tous les Équipements & Vidéos",
+      aboutFactory: "À Propos de l'Usine",
+      labelTypesTagline: "Plus de 40 types d'étiquettes pour acheteurs B2B",
+      selectLanguage: "Choisir la Langue",
+      productsByIndustry: "Produits par Industrie",
     },
     home: {
       heroTag: "Fabricant d'Étiquettes B2B · Certifié ISO 9001",
@@ -433,6 +489,20 @@ export const translations: Record<Locale, Translations> = {
       about: "Sobre Nós",
       contact: "Contato",
       getQuote: "Solicitar Orçamento",
+home: "Início",
+      byIndustry: "Por Indústria",
+      byMaterial: "Por Material",
+      performanceSpecialty: "Desempenho e Especialidade",
+      byBuyerType: "Por Tipo de Comprador",
+      bySourcingNeed: "Por Necessidade de Compra",
+      printing: "Impressão",
+      finishing: "Acabamento",
+      viewAllProducts: "Ver Todos os Produtos",
+      viewAllEquipment: "Ver Todos os Equipamentos e Vídeos",
+      aboutFactory: "Sobre a Fábrica",
+      labelTypesTagline: "Mais de 40 tipos de etiquetas para compradores B2B",
+      selectLanguage: "Selecionar Idioma",
+      productsByIndustry: "Produtos por Indústria",
     },
     home: {
       heroTag: "Fabricante B2B de Etiquetas · Certificado ISO 9001",
@@ -524,6 +594,20 @@ export const translations: Record<Locale, Translations> = {
       about: "Über Uns",
       contact: "Kontakt",
       getQuote: "Angebot Anfordern",
+home: "Startseite",
+      byIndustry: "Nach Branche",
+      byMaterial: "Nach Material",
+      performanceSpecialty: "Leistung & Spezialität",
+      byBuyerType: "Nach Käufertyp",
+      bySourcingNeed: "Nach Beschaffungsbedarf",
+      printing: "Druck",
+      finishing: "Veredelung",
+      viewAllProducts: "Alle Produkte Anzeigen",
+      viewAllEquipment: "Alle Geräte & Videos Anzeigen",
+      aboutFactory: "Über die Fabrik",
+      labelTypesTagline: "40+ Etikettentypen für globale B2B-Käufer",
+      selectLanguage: "Sprache Auswählen",
+      productsByIndustry: "Produkte nach Branche",
     },
     home: {
       heroTag: "B2B-Etikettenhersteller · ISO 9001 Zertifiziert",
@@ -615,6 +699,20 @@ export const translations: Record<Locale, Translations> = {
       about: "О Нас",
       contact: "Контакты",
       getQuote: "Запросить Цену",
+home: "Главная",
+      byIndustry: "По Отрасли",
+      byMaterial: "По Материалу",
+      performanceSpecialty: "Характеристики и Специальность",
+      byBuyerType: "По Типу Покупателя",
+      bySourcingNeed: "По Потребности в Закупках",
+      printing: "Печать",
+      finishing: "Отделка",
+      viewAllProducts: "Все Продукты",
+      viewAllEquipment: "Все Оборудование и Видео",
+      aboutFactory: "О Заводе",
+      labelTypesTagline: "40+ типов этикеток для B2B-покупателей",
+      selectLanguage: "Выбрать Язык",
+      productsByIndustry: "Продукты по Отрасли",
     },
     home: {
       heroTag: "B2B Производитель Этикеток · Сертификат ISO 9001",
@@ -706,6 +804,20 @@ export const translations: Record<Locale, Translations> = {
       about: "会社概要",
       contact: "お問い合わせ",
       getQuote: "見積もり依頼",
+home: "ホーム",
+      byIndustry: "業界別",
+      byMaterial: "素材別",
+      performanceSpecialty: "性能・特殊ラベル",
+      byBuyerType: "購入者タイプ別",
+      bySourcingNeed: "調達ニーズ別",
+      printing: "印刷",
+      finishing: "加工",
+      viewAllProducts: "全製品を見る",
+      viewAllEquipment: "全設備・動画を見る",
+      aboutFactory: "工場について",
+      labelTypesTagline: "B2B購入者向け40種類以上のラベル",
+      selectLanguage: "言語を選択",
+      productsByIndustry: "業界別製品",
     },
     home: {
       heroTag: "B2Bラベルメーカー · ISO 9001認証",
@@ -797,6 +909,20 @@ export const translations: Record<Locale, Translations> = {
       about: "من نحن",
       contact: "اتصل بنا",
       getQuote: "طلب عرض سعر",
+home: "الرئيسية",
+      byIndustry: "حسب الصناعة",
+      byMaterial: "حسب المادة",
+      performanceSpecialty: "الأداء والتخصص",
+      byBuyerType: "حسب نوع المشتري",
+      bySourcingNeed: "حسب احتياجات التوريد",
+      printing: "الطباعة",
+      finishing: "التشطيب",
+      viewAllProducts: "عرض جميع المنتجات",
+      viewAllEquipment: "عرض جميع المعدات والفيديوهات",
+      aboutFactory: "عن المصنع",
+      labelTypesTagline: "أكثر من 40 نوعاً من الملصقات للمشترين B2B",
+      selectLanguage: "اختر اللغة",
+      productsByIndustry: "المنتجات حسب الصناعة",
     },
     home: {
       heroTag: "مصنع ملصقات B2B · معتمد ISO 9001",

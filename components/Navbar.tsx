@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { getTranslations, type Locale } from "@/lib/i18n";
 import {
   Menu, X, ChevronDown, ChevronRight,
   Sparkles, Droplets, FlaskConical, Apple, Wine, Beer, Pill, PawPrint,
@@ -144,6 +145,8 @@ export default function Navbar() {
   // Detect current locale from pathname
   const currentLocale = ["es","fr","pt","de","ru","ja","ar"].find(l => pathname.startsWith(`/${l}`)) || "en";
   const lang = languages.find(l => l.code === currentLocale) || languages[0];
+  const t = getTranslations(currentLocale as Locale);
+  const localePath = (path: string) => currentLocale === "en" ? path : `/${currentLocale}${path === "/" ? "" : path}`;
 
   // Get the path without locale prefix
   const pathWithoutLocale = currentLocale === "en" ? pathname : pathname.replace(`/${currentLocale}`, "") || "/";
@@ -181,12 +184,12 @@ export default function Navbar() {
 
           {/* Desktop nav */}
           <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
-            <Link href="/" className={`text-sm font-medium tracking-wide uppercase transition-colors duration-200 ${isHome ? "text-[#E8A020]" : "text-white/80 hover:text-[#E8A020]"}`}>Home</Link>
+            <Link href={localePath("/")} className={`text-sm font-medium tracking-wide uppercase transition-colors duration-200 ${isHome ? "text-[#E8A020]" : "text-white/80 hover:text-[#E8A020]"}`}>Home</Link>
 
             {/* Products */}
             <div className="relative">
               <button onClick={() => toggle("products")} className={`flex items-center gap-1 text-sm font-medium tracking-wide uppercase transition-colors duration-200 ${active === "products" ? "text-[#E8A020]" : "text-white/80 hover:text-[#E8A020]"}`}>
-                Products <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${active === "products" ? "rotate-180" : ""}`} />
+                {t.nav.products} <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${active === "products" ? "rotate-180" : ""}`} />
               </button>
               <Drop open={active === "products"} width="860px">
                 <div className="grid grid-cols-3 gap-5">
@@ -196,7 +199,7 @@ export default function Navbar() {
                 </div>
                 <div className="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between">
                   <span className="text-gray-400 text-xs">40+ label types for global B2B buyers</span>
-                  <Link href="/products" onClick={close} className="flex items-center gap-1.5 text-[#0F2744] font-semibold text-sm hover:text-[#E8A020] transition-colors">View All Products <ChevronRight className="w-3.5 h-3.5" /></Link>
+                  <Link href={localePath("/products")} onClick={close} className="flex items-center gap-1.5 text-[#0F2744] font-semibold text-sm hover:text-[#E8A020] transition-colors">View All Products <ChevronRight className="w-3.5 h-3.5" /></Link>
                 </div>
               </Drop>
             </div>
@@ -204,7 +207,7 @@ export default function Navbar() {
             {/* Solutions */}
             <div className="relative">
               <button onClick={() => toggle("solutions")} className={`flex items-center gap-1 text-sm font-medium tracking-wide uppercase transition-colors duration-200 ${active === "solutions" ? "text-[#E8A020]" : "text-white/80 hover:text-[#E8A020]"}`}>
-                Solutions <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${active === "solutions" ? "rotate-180" : ""}`} />
+                {t.nav.solutions} <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${active === "solutions" ? "rotate-180" : ""}`} />
               </button>
               <Drop open={active === "solutions"} width="580px">
                 <div className="grid grid-cols-2 gap-5">
@@ -212,7 +215,7 @@ export default function Navbar() {
                   <MenuCol title="By Sourcing Need" items={solutionsBySourcing} onClose={close} />
                 </div>
                 <div className="mt-4 pt-3 border-t border-gray-100">
-                  <Link href="/contact" onClick={close} className="flex items-center gap-1.5 text-[#0F2744] font-semibold text-sm hover:text-[#E8A020] transition-colors">Get a Custom Quote <ChevronRight className="w-3.5 h-3.5" /></Link>
+                  <Link href={localePath("/contact")} onClick={close} className="flex items-center gap-1.5 text-[#0F2744] font-semibold text-sm hover:text-[#E8A020] transition-colors">{t.nav.getQuote} <ChevronRight className="w-3.5 h-3.5" /></Link>
                 </div>
               </Drop>
             </div>
@@ -220,7 +223,7 @@ export default function Navbar() {
             {/* Capabilities */}
             <div className="relative">
               <button onClick={() => toggle("capabilities")} className={`flex items-center gap-1 text-sm font-medium tracking-wide uppercase transition-colors duration-200 ${active === "capabilities" ? "text-[#E8A020]" : "text-white/80 hover:text-[#E8A020]"}`}>
-                Capabilities <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${active === "capabilities" ? "rotate-180" : ""}`} />
+                {t.nav.capabilities} <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${active === "capabilities" ? "rotate-180" : ""}`} />
               </button>
               <Drop open={active === "capabilities"} width="500px">
                 <div className="grid grid-cols-2 gap-5">
@@ -229,18 +232,18 @@ export default function Navbar() {
                 </div>
                 <div className="mt-4 pt-3 border-t border-gray-100">
                   <div className="flex items-center justify-between">
-                    <Link href="/capabilities" onClick={close} className="flex items-center gap-1.5 text-[#0F2744] font-semibold text-sm hover:text-[#E8A020] transition-colors">
+                    <Link href={localePath("/capabilities")} onClick={close} className="flex items-center gap-1.5 text-[#0F2744] font-semibold text-sm hover:text-[#E8A020] transition-colors">
                       <Camera className="w-3.5 h-3.5" /> View All Equipment &amp; Videos <ChevronRight className="w-3.5 h-3.5" />
                     </Link>
-                    <Link href="/about" onClick={close} className="flex items-center gap-1.5 text-gray-400 text-xs hover:text-[#E8A020] transition-colors">About Factory</Link>
+                    <Link href={localePath("/about")} onClick={close} className="flex items-center gap-1.5 text-gray-400 text-xs hover:text-[#E8A020] transition-colors">About Factory</Link>
                   </div>
                 </div>
               </Drop>
             </div>
 
-            <Link href="/about" className="text-white/80 hover:text-[#E8A020] text-sm font-medium tracking-wide uppercase transition-colors duration-200">About</Link>
-            <Link href="/blog" className="text-white/80 hover:text-[#E8A020] text-sm font-medium tracking-wide uppercase transition-colors duration-200">Blog</Link>
-            <Link href="/contact" className="text-white/80 hover:text-[#E8A020] text-sm font-medium tracking-wide uppercase transition-colors duration-200">Contact</Link>
+            <Link href={localePath("/about")} className="text-white/80 hover:text-[#E8A020] text-sm font-medium tracking-wide uppercase transition-colors duration-200">{t.nav.about}</Link>
+            <Link href={localePath("/blog")} className="text-white/80 hover:text-[#E8A020] text-sm font-medium tracking-wide uppercase transition-colors duration-200">{t.nav.blog}</Link>
+            <Link href={localePath("/contact")} className="text-white/80 hover:text-[#E8A020] text-sm font-medium tracking-wide uppercase transition-colors duration-200">{t.nav.contact}</Link>
           </nav>
 
           {/* Right: Lang + CTA */}
@@ -271,8 +274,8 @@ export default function Navbar() {
                 ))}
               </div>
             </div>
-            <Link href="/contact" className="inline-flex items-center gap-2 bg-[#E8A020] hover:bg-[#d4911c] text-[#0F2744] font-bold text-sm px-5 py-2.5 rounded transition-all duration-200 hover:scale-[1.02] active:scale-[0.97] uppercase tracking-wide" style={{ fontFamily: "var(--font-barlow)" }}>
-              Get Free Sample <ChevronRight className="w-4 h-4" />
+            <Link href={localePath("/contact")} className="inline-flex items-center gap-2 bg-[#E8A020] hover:bg-[#d4911c] text-[#0F2744] font-bold text-sm px-5 py-2.5 rounded transition-all duration-200 hover:scale-[1.02] active:scale-[0.97] uppercase tracking-wide" style={{ fontFamily: "var(--font-barlow)" }}>
+              {t.nav.getQuote} <ChevronRight className="w-4 h-4" />
             </Link>
           </div>
 
@@ -287,7 +290,7 @@ export default function Navbar() {
       {mobileOpen && (
         <div className="lg:hidden bg-[#0F2744] border-t border-white/10 max-h-[80vh] overflow-y-auto">
           <div className="px-4 py-4 space-y-1">
-            <Link href="/" className="block text-white/80 hover:text-[#E8A020] py-3 text-base font-medium border-b border-white/10 transition-colors" onClick={() => setMobileOpen(false)}>Home</Link>
+            <Link href={localePath("/")} className="block text-white/80 hover:text-[#E8A020] py-3 text-base font-medium border-b border-white/10 transition-colors" onClick={() => setMobileOpen(false)}>Home</Link>
             <div className="text-white/50 text-[10px] uppercase tracking-widest py-2 px-1">Products by Industry</div>
             {industries.slice(0, 8).map(item => {
               const Icon = item.icon;
@@ -297,10 +300,10 @@ export default function Navbar() {
                 </Link>
               );
             })}
-            <Link href="/products" className="block text-[#E8A020] font-semibold py-2.5 text-sm border-b border-white/10 transition-colors" onClick={() => setMobileOpen(false)}>View All Products →</Link>
-            <Link href="/about" className="block text-white/80 hover:text-[#E8A020] py-3 text-base font-medium border-b border-white/10 transition-colors" onClick={() => setMobileOpen(false)}>About Us</Link>
-            <Link href="/contact" className="block text-white/80 hover:text-[#E8A020] py-3 text-base font-medium border-b border-white/10 transition-colors" onClick={() => setMobileOpen(false)}>Contact</Link>
-            <Link href="/contact" className="block mt-4 bg-[#E8A020] text-[#0F2744] font-bold text-center py-3 rounded uppercase tracking-wide" onClick={() => setMobileOpen(false)}>Get Free Sample</Link>
+            <Link href={localePath("/products")} className="block text-[#E8A020] font-semibold py-2.5 text-sm border-b border-white/10 transition-colors" onClick={() => setMobileOpen(false)}>View All Products →</Link>
+            <Link href={localePath("/about")} className="block text-white/80 hover:text-[#E8A020] py-3 text-base font-medium border-b border-white/10 transition-colors" onClick={() => setMobileOpen(false)}>{t.nav.about}</Link>
+            <Link href={localePath("/contact")} className="block text-white/80 hover:text-[#E8A020] py-3 text-base font-medium border-b border-white/10 transition-colors" onClick={() => setMobileOpen(false)}>{t.nav.contact}</Link>
+            <Link href={localePath("/contact")} className="block mt-4 bg-[#E8A020] text-[#0F2744] font-bold text-center py-3 rounded uppercase tracking-wide" onClick={() => setMobileOpen(false)}>{t.nav.getQuote}</Link>
           </div>
         </div>
       )}

@@ -2,26 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:wght@400;500;600&display=swap');
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-barlow: 'Barlow Condensed', sans-serif;
+  --font-dm-sans: 'DM Sans', sans-serif;
+  --navy: #0F2744;
+  --amber: #E8A020;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+html { scroll-behavior: smooth; }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-dm-sans);
+  background: #fff;
+  color: #1a1a2e;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display { font-family: var(--font-barlow); }
+
+.ticker-wrap { overflow: hidden; }
+.ticker-inner { display: flex; animation: ticker 35s linear infinite; white-space: nowrap; }
+.ticker-inner:hover { animation-play-state: paused; }
+
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+  .text-balance { text-wrap: balance; }
 }

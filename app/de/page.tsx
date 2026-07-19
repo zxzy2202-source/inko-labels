@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { CheckCircle2, ChevronRight, Star, Award, Globe, Sparkles, Apple, PawPrint, Droplets, Pill, Factory, Shield, Zap, Layers, Package } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Individuelle Etiketten B2B | Hersteller China | INKO Custom Labels",
-  description: "INKO Custom Labels: ISO 9001 zertifizierter B2B-Etikettenhersteller in Xi'an, China. MOQ 500 Rollen, 7 Tage Muster, DHL-Lieferung in 60+ Laender.",
+  description: "INKO Custom Labels: ISO 9001 zertifizierter B2B-Etikettenhersteller in Xi&#39;an, China. MOQ 500 Rollen, 7 Tage Muster, DHL-Lieferung in 60+ Laender.",
   alternates: {
     canonical: "https://inkolabels.com/de",
     languages: { en: "https://inkolabels.com", es: "https://inkolabels.com/es", fr: "https://inkolabels.com/fr", de: "https://inkolabels.com/de", pt: "https://inkolabels.com/pt", ru: "https://inkolabels.com/ru", ja: "https://inkolabels.com/ja", ar: "https://inkolabels.com/ar", "x-default": "https://inkolabels.com" },
@@ -158,8 +158,8 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <div className="text-[#E8A020] text-xs font-bold tracking-widest uppercase mb-3">Unsere Fabrik</div>
-              <h2 className="text-5xl font-black text-[#0F2744] uppercase leading-tight mb-6" style={{ fontFamily: "var(--font-barlow)" }}>Praezisionsfertigung<br /><span className="text-[#E8A020]">Xi'an, China</span></h2>
-              <p className="text-gray-600 leading-relaxed mb-6">In Xi'an, Shaanxi gelegen, produziert unsere Fabrik ueber 50 Millionen Etiketten pro Monat fuer Kunden in 60+ Laendern.</p>
+              <h2 className="text-5xl font-black text-[#0F2744] uppercase leading-tight mb-6" style={{ fontFamily: "var(--font-barlow)" }}>Praezisionsfertigung<br /><span className="text-[#E8A020]">Xi&#39;an, China</span></h2>
+              <p className="text-gray-600 leading-relaxed mb-6">In Xi&#39;an, Shaanxi gelegen, produziert unsere Fabrik ueber 50 Millionen Etiketten pro Monat fuer Kunden in 60+ Laendern.</p>
               <ul className="space-y-3 mb-8"><li className="flex items-center gap-3 text-gray-700"><CheckCircle2 className="w-5 h-5 text-[#E8A020] flex-shrink-0" />7-Farben-Flexodruck mit Harzplatte</li>
                 <li className="flex items-center gap-3 text-gray-700"><CheckCircle2 className="w-5 h-5 text-[#E8A020] flex-shrink-0" />Warm- und Kaltlaminierung in-line</li>
                 <li className="flex items-center gap-3 text-gray-700"><CheckCircle2 className="w-5 h-5 text-[#E8A020] flex-shrink-0" />Hochgeschwindigkeits-Heissfoliengraegung und Stanzen</li>
@@ -167,7 +167,7 @@ export default function HomePage() {
                 <li className="flex items-center gap-3 text-gray-700"><CheckCircle2 className="w-5 h-5 text-[#E8A020] flex-shrink-0" />ISO 9001:2015 Zertifizierung</li></ul>
               <Link href="/de/about" className="inline-flex items-center gap-2 text-[#E8A020] font-semibold hover:underline">Unsere Fabrik Entdecken <ChevronRight className="w-4 h-4" /></Link>
             </div>
-            <div><Image src="/manus-storage/factory-production-line_3b0322fe.jpg" alt="INKO Factory Xi'an" width={600} height={450} className="rounded-2xl shadow-lg object-cover w-full" /></div>
+            <div><Image src="/manus-storage/factory-production-line_3b0322fe.jpg" alt="INKO Factory Xi&#39;an" width={600} height={450} className="rounded-2xl shadow-lg object-cover w-full" /></div>
           </div>
         </div>
       </section>

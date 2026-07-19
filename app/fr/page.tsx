@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { CheckCircle2, ChevronRight, Star, Award, Globe, Sparkles, Apple, PawPrint, Droplets, Pill, Factory, Shield, Zap, Layers, Package } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Étiquettes Personnalisées B2B | Fabricant Chine | INKO Custom Labels",
-  description: "INKO Custom Labels : fabricant B2B d'étiquettes certifié ISO 9001 à Xi'an, Chine. MOQ bas 500 rouleaux, échantillons 7 jours, livraison DHL dans 60+ pays.",
+  description: "INKO Custom Labels : fabricant B2B d'étiquettes certifié ISO 9001 à Xi&#39;an, Chine. MOQ bas 500 rouleaux, échantillons 7 jours, livraison DHL dans 60+ pays.",
   alternates: {
     canonical: "https://inkolabels.com/fr",
     languages: {
@@ -187,7 +187,7 @@ export default function FrHomePage() {
               ))}</ul>
               <Link href="/fr/about" className="inline-flex items-center gap-2 text-[#E8A020] font-semibold hover:underline">Découvrir Notre Usine <ChevronRight className="w-4 h-4" /></Link>
             </div>
-            <div><Image src="/manus-storage/factory-production-line_3b0322fe.jpg" alt="Ligne de production INKO Xi'an" width={600} height={450} className="rounded-2xl shadow-lg object-cover w-full" /></div>
+            <div><Image src="/manus-storage/factory-production-line_3b0322fe.jpg" alt="Ligne de production INKO Xi&#39;an" width={600} height={450} className="rounded-2xl shadow-lg object-cover w-full" /></div>
           </div>
         </div>
       </section>

@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { CheckCircle2, ChevronRight, Star, Award, Globe, Sparkles, Apple, PawPrint, Droplets, Pill, Factory, Shield, Zap, Layers, Package } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Etiquetas Personalizadas B2B | Fabricante China | INKO Custom Labels",
-  description: "INKO Custom Labels: fabricante B2B de etiquetas certificado ISO 9001 en Xi'an, China. Etiquetas cosméticas, alimentarias, bebidas, mascotas, suplementos. MOQ bajo 500 rollos, muestras en 7 días, envío DHL a 60+ países.",
+  description: "INKO Custom Labels: fabricante B2B de etiquetas certificado ISO 9001 en Xi&#39;an, China. Etiquetas cosméticas, alimentarias, bebidas, mascotas, suplementos. MOQ bajo 500 rollos, muestras en 7 días, envío DHL a 60+ países.",
   keywords: ["fabricante etiquetas China", "etiquetas personalizadas B2B", "MOQ bajo etiquetas", "fabricante etiquetas cosméticas", "etiquetas alimentarias"],
   alternates: {
     canonical: "https://inkolabels.com/es",
@@ -220,7 +220,7 @@ export default function EsHomePage() {
               </Link>
             </div>
             <div>
-              <Image src="/manus-storage/factory-production-line_3b0322fe.jpg" alt="Línea de producción de etiquetas INKO en Xi'an China" width={600} height={450} className="rounded-2xl shadow-lg object-cover w-full" />
+              <Image src="/manus-storage/factory-production-line_3b0322fe.jpg" alt="Línea de producción de etiquetas INKO en Xi&#39;an China" width={600} height={450} className="rounded-2xl shadow-lg object-cover w-full" />
             </div>
           </div>
         </div>

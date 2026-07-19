@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { CheckCircle2, ChevronRight, Star, Award, Globe, Sparkles, Apple, PawPrint, Droplets, Pill, Factory, Shield, Zap, Layers, Package } from "lucide-react";
@@ -167,7 +167,7 @@ export default function HomePage() {
                 <li className="flex items-center gap-3 text-gray-700"><CheckCircle2 className="w-5 h-5 text-[#E8A020] flex-shrink-0" />ISO 9001:2015認証</li></ul>
               <Link href="/ja/about" className="inline-flex items-center gap-2 text-[#E8A020] font-semibold hover:underline">当社工場について <ChevronRight className="w-4 h-4" /></Link>
             </div>
-            <div><Image src="/manus-storage/factory-production-line_3b0322fe.jpg" alt="INKO Factory Xi'an" width={600} height={450} className="rounded-2xl shadow-lg object-cover w-full" /></div>
+            <div><Image src="/manus-storage/factory-production-line_3b0322fe.jpg" alt="INKO Factory Xi&#39;an" width={600} height={450} className="rounded-2xl shadow-lg object-cover w-full" /></div>
           </div>
         </div>
       </section>

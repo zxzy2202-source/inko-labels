@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { CheckCircle2, ChevronRight, Star, Award, Globe, Sparkles, Apple, PawPrint, Droplets, Pill, Factory, Shield, Zap, Layers, Package } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Rotulos Personalizados B2B | Fabricante China | INKO Custom Labels",
-  description: "INKO Custom Labels: fabricante B2B de rotulos certificado ISO 9001 em Xi'an, China. MOQ baixo 500 rolos, amostras em 7 dias, entrega DHL em 60+ paises.",
+  description: "INKO Custom Labels: fabricante B2B de rotulos certificado ISO 9001 em Xi&#39;an, China. MOQ baixo 500 rolos, amostras em 7 dias, entrega DHL em 60+ paises.",
   alternates: {
     canonical: "https://inkolabels.com/pt",
     languages: { en: "https://inkolabels.com", es: "https://inkolabels.com/es", fr: "https://inkolabels.com/fr", de: "https://inkolabels.com/de", pt: "https://inkolabels.com/pt", ru: "https://inkolabels.com/ru", ja: "https://inkolabels.com/ja", ar: "https://inkolabels.com/ar", "x-default": "https://inkolabels.com" },
@@ -158,8 +158,8 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <div className="text-[#E8A020] text-xs font-bold tracking-widest uppercase mb-3">Nossa Fabrica</div>
-              <h2 className="text-5xl font-black text-[#0F2744] uppercase leading-tight mb-6" style={{ fontFamily: "var(--font-barlow)" }}>Fabricacao de Precisao<br /><span className="text-[#E8A020]">Xi'an, China</span></h2>
-              <p className="text-gray-600 leading-relaxed mb-6">Localizada em Xi'an, Shaanxi, nossa fabrica produz mais de 50 milhoes de rotulos por mes para clientes em 60+ paises.</p>
+              <h2 className="text-5xl font-black text-[#0F2744] uppercase leading-tight mb-6" style={{ fontFamily: "var(--font-barlow)" }}>Fabricacao de Precisao<br /><span className="text-[#E8A020]">Xi&#39;an, China</span></h2>
+              <p className="text-gray-600 leading-relaxed mb-6">Localizada em Xi&#39;an, Shaanxi, nossa fabrica produz mais de 50 milhoes de rotulos por mes para clientes em 60+ paises.</p>
               <ul className="space-y-3 mb-8"><li className="flex items-center gap-3 text-gray-700"><CheckCircle2 className="w-5 h-5 text-[#E8A020] flex-shrink-0" />Prensa flexo 7 cores com placa de resina</li>
                 <li className="flex items-center gap-3 text-gray-700"><CheckCircle2 className="w-5 h-5 text-[#E8A020] flex-shrink-0" />Laminacao a quente e a frio em linha</li>
                 <li className="flex items-center gap-3 text-gray-700"><CheckCircle2 className="w-5 h-5 text-[#E8A020] flex-shrink-0" />Estampagem a quente de alta velocidade e corte</li>
@@ -167,7 +167,7 @@ export default function HomePage() {
                 <li className="flex items-center gap-3 text-gray-700"><CheckCircle2 className="w-5 h-5 text-[#E8A020] flex-shrink-0" />Certificacao ISO 9001:2015</li></ul>
               <Link href="/pt/about" className="inline-flex items-center gap-2 text-[#E8A020] font-semibold hover:underline">Conhecer Nossa Fabrica <ChevronRight className="w-4 h-4" /></Link>
             </div>
-            <div><Image src="/manus-storage/factory-production-line_3b0322fe.jpg" alt="INKO Factory Xi'an" width={600} height={450} className="rounded-2xl shadow-lg object-cover w-full" /></div>
+            <div><Image src="/manus-storage/factory-production-line_3b0322fe.jpg" alt="INKO Factory Xi&#39;an" width={600} height={450} className="rounded-2xl shadow-lg object-cover w-full" /></div>
           </div>
         </div>
       </section>

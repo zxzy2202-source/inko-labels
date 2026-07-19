@@ -113,7 +113,7 @@ export default function ContactPage() {
                 <h3 className="font-display text-xl font-black uppercase mb-4" style={{ fontFamily: "var(--font-barlow)" }}>Contact Information</h3>
                 <ul className="space-y-4 text-sm">
                   <li className="flex items-start gap-3"><Mail className="w-4 h-4 text-[#E8A020] flex-shrink-0 mt-0.5" /><a href="mailto:info@inkolabels.com" className="text-white/80 hover:text-[#E8A020] transition-colors">info@inkolabels.com</a></li>
-                  <li className="flex items-start gap-3"><Phone className="w-4 h-4 text-[#E8A020] flex-shrink-0 mt-0.5" /><span className="text-white/80">+86 139 0000 0000</span></li>
+                  <li className="flex items-start gap-3"><Phone className="w-4 h-4 text-[#E8A020] flex-shrink-0 mt-0.5" /><a href="tel:+8613572821237" className="text-white/80 hover:text-[#E8A020] transition-colors">+86 135 7282 1237</a></li>
                   <li className="flex items-start gap-3"><MapPin className="w-4 h-4 text-[#E8A020] flex-shrink-0 mt-0.5" /><span className="text-white/80">Xi&apos;an, Shaanxi Province, China</span></li>
                   <li className="flex items-start gap-3"><Clock className="w-4 h-4 text-[#E8A020] flex-shrink-0 mt-0.5" /><span className="text-white/80">Mon–Sat 9:00am–6:00pm CST</span></li>
                 </ul>

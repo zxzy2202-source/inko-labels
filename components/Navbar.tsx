@@ -84,20 +84,21 @@ const solutionsBySourcing = [
 ];
 
 const printing = [
-  { label: "Digital Label Printing",     href: "/capabilities/digital-printing", icon: Printer },
-  { label: "Flexographic Printing",      href: "/capabilities/flexo-printing",   icon: Layers },
-  { label: "Variable Data Printing",     href: "/capabilities/variable-data",    icon: BarChart2 },
-  { label: "Barcode & QR Code Printing", href: "/capabilities/barcode-printing", icon: MonitorPlay },
-  { label: "White Ink Printing",         href: "/capabilities/white-ink",        icon: Eye },
-  { label: "Multi-Color Printing",       href: "/capabilities/multi-color",      icon: Palette },
+  { label: "7-Color Resin Plate Flexo Press", href: "/capabilities/flexo-printing",   icon: Layers },
+  { label: "Adhesive-Side (Back) Printing",   href: "/capabilities/adhesive-printing", icon: Eye },
+  { label: "Variable Data & Barcode Printing",href: "/capabilities/variable-data",    icon: BarChart2 },
+  { label: "White Ink Printing",              href: "/capabilities/white-ink",        icon: Printer },
+  { label: "Multi-Color & PANTONE Matching",  href: "/capabilities/multi-color",      icon: Palette },
 ];
 
 const finishing = [
-  { label: "Gloss & Matte Lamination", href: "/capabilities/lamination",   icon: Layers },
-  { label: "Hot & Cold Foil Stamping", href: "/capabilities/foil-stamping", icon: Zap },
-  { label: "Spot UV",                  href: "/capabilities/spot-uv",      icon: Sparkles },
-  { label: "Embossing & Debossing",    href: "/capabilities/embossing",    icon: Square },
-  { label: "Custom Die Cutting",       href: "/capabilities/die-cutting",  icon: Scissors },
+  { label: "Inline Lamination (Gloss / Matte / Soft-Touch)", href: "/capabilities/lamination",       icon: Layers },
+  { label: "Hot Lamination Machine",                         href: "/capabilities/hot-lamination",   icon: Flame },
+  { label: "Foil Stamping + Die-Cutting High-Speed Press",   href: "/capabilities/foil-die-cutting", icon: Zap },
+  { label: "Inline Die Cutting",                             href: "/capabilities/die-cutting",      icon: Scissors },
+  { label: "Spot UV",                                        href: "/capabilities/spot-uv",          icon: Sparkles },
+  { label: "Embossing & Debossing",                          href: "/capabilities/embossing",        icon: Square },
+  { label: "Vision Inspection + Precision Slitting",         href: "/capabilities/inspection-slitting", icon: Eye },
 ];
 
 type DropKey = "products" | "solutions" | "capabilities" | "lang" | null;

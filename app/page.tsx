@@ -25,12 +25,12 @@ const products = [
 ];
 
 const whyUs = [
-  { icon: Shield, title: "ISO 9001 Certified", desc: "Strict quality management system with full traceability from raw materials to finished goods." },
-  { icon: Zap, title: "Fast Turnaround", desc: "Sample in 3–5 days. Production in 7–10 days. Rush orders available for urgent needs." },
-  { icon: Layers, title: "Low MOQ", desc: "Start from 500 rolls per design. Perfect for startups, DTC brands and multi-SKU buyers." },
-  { icon: Globe, title: "Global Shipping", desc: "DHL, FedEx, sea freight to 60+ countries. Full export documentation included." },
-  { icon: Package, title: "Custom Everything", desc: "Size, shape, material, finish, adhesive — every detail customized to your spec." },
-  { icon: Award, title: "15+ Years Experience", desc: "Thousands of B2B clients across cosmetics, food, pharma, and industrial sectors." },
+  { icon: Layers, title: "7-Color Resin Plate Flexo Press", desc: "Resin-plate 7-color flexo press with inline lamination and inline die-cutting — PANTONE matching, extended gamut, no secondary pass needed." },
+  { icon: Package, title: "Adhesive-Side (Back) Printing", desc: "Back-print on clear BOPP labels: graphics printed on the adhesive face create a premium no-label look with built-in scratch-proof protection." },
+  { icon: Zap, title: "Foil Stamping + Die-Cutting High-Speed Press", desc: "Dedicated high-speed foil stamping and die-cutting machine — hot foil, cold foil, and precision custom shapes in a single high-speed pass." },
+  { icon: Shield, title: "Hot Lamination Machine", desc: "Thermal laminator for heavy-duty protective coatings and premium foil-finish overlaminates on cosmetic, wine and luxury labels." },
+  { icon: Award, title: "2× Vision Inspection + Slitting Lines", desc: "Two inspection-slitting combo machines: 100% vision defect detection plus precision roll slitting to your exact width, length and core spec." },
+  { icon: Globe, title: "Low MOQ · Worldwide Shipping", desc: "500 rolls minimum per design. Sample in 3–5 days, production in 7–10 days. DHL / FedEx / sea freight to 60+ countries." },
 ];
 
 const testimonials = [
@@ -146,8 +146,8 @@ export default function HomePage() {
             <div>
               <div className="text-[#E8A020] text-xs font-bold tracking-widest uppercase mb-3">Our Factory</div>
               <h2 className="text-5xl font-black text-[#0F2744] uppercase leading-tight mb-6" style={{ fontFamily: "var(--font-barlow)" }}>Precision Manufacturing<br /><span className="text-[#E8A020]">Xi&apos;an, China</span></h2>
-              <p className="text-gray-600 leading-relaxed mb-6">Located in Xi&apos;an, Shaanxi Province, our 5,000 m² facility runs 8 flexographic and digital printing lines with full in-house finishing capabilities.</p>
-              <ul className="space-y-3 mb-8">{["8 high-speed printing lines (flexo + digital)","In-house lamination, foil stamping, die cutting","3-stage QC: incoming, in-process, outgoing","ISO 9001:2015 certified quality system"].map(item => (
+              <p className="text-gray-600 leading-relaxed mb-6">Located in Xi&apos;an, Shaanxi Province, our facility is equipped with a resin-plate 7-color flexo press (inline lamination + inline die-cutting), a foil stamping & die-cutting high-speed press, a hot lamination machine, and two vision-inspection & slitting combo lines.</p>
+              <ul className="space-y-3 mb-8">{["Resin plate 7-color flexo press — inline lamination + inline die-cutting","Adhesive-side (back-print) for no-label-look clear BOPP labels","Foil stamping + die-cutting high-speed press (hot & cold foil)","Hot lamination machine — thermal protective & foil overlaminates","2× vision inspection + slitting combo (100% defect detection)","ISO 9001:2015 certified quality management system"].map(item => (
                 <li key={item} className="flex items-start gap-3 text-sm text-gray-700"><CheckCircle2 className="w-4 h-4 text-[#E8A020] flex-shrink-0 mt-0.5" />{item}</li>
               ))}</ul>
               <Link href="/about" className="inline-flex items-center gap-2 bg-[#0F2744] hover:bg-[#1a3a5c] text-white font-bold px-6 py-3 rounded text-sm uppercase tracking-wide transition-all duration-200" style={{ fontFamily: "var(--font-barlow)" }}>Learn More <ChevronRight className="w-4 h-4" /></Link>

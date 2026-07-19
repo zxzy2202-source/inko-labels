@@ -30,9 +30,9 @@ export default function AboutPage() {
             <div>
               <h2 className="font-display text-4xl font-black text-[#0F2744] uppercase mb-6" style={{ fontFamily: "var(--font-barlow)" }}>Our Story</h2>
               <p className="text-gray-600 leading-relaxed mb-4">Founded in Xi&apos;an, Shaanxi Province, INKO Custom Labels has grown from a regional printing supplier into a globally trusted B2B label manufacturer. We specialize in custom-printed pressure-sensitive labels for cosmetics, food, beverage, pharmaceutical, and industrial sectors.</p>
-              <p className="text-gray-600 leading-relaxed mb-6">Our 5,000 m² facility houses 8 high-speed printing lines and a full suite of finishing equipment. Every label we produce undergoes a 3-stage quality inspection process before shipment.</p>
+              <p className="text-gray-600 leading-relaxed mb-6">Our production line includes: a resin-plate 7-color flexo press with inline lamination and inline die-cutting; a dedicated foil stamping & die-cutting high-speed press for hot/cold foil and precision shapes; a hot lamination machine for premium thermal finishes; and two vision-inspection & slitting combo lines for 100% defect detection and precision roll delivery.</p>
               <div className="grid grid-cols-2 gap-4">
-                {[{ icon: Award, label: "ISO 9001:2015 Certified" }, { icon: Globe, label: "60+ Countries Served" }, { icon: Users, label: "500+ Active B2B Clients" }, { icon: Factory, label: "5,000 m² Factory" }].map(item => {
+              {[{ icon: Award, label: "ISO 9001:2015 Certified" }, { icon: Globe, label: "60+ Countries Served" }, { icon: Layers, label: "7-Color Resin Plate Flexo" }, { icon: Zap, label: "Foil Stamping + Die-Cutting H/S" }, { icon: Shield, label: "Hot Lamination Machine" }, { icon: Package, label: "2× Inspection + Slitting Lines" }].map(item => {
                   const Icon = item.icon;
                   return (
                     <div key={item.label} className="flex items-center gap-3 bg-gray-50 rounded-xl p-4">
@@ -67,3 +67,4 @@ export default function AboutPage() {
     </>
   );
 }
+import { CheckCircle2, ChevronRight, Award, Globe, Users, Factory, Layers, Zap, Shield, Package } from "lucide-react";

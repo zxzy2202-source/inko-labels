@@ -4,8 +4,16 @@ import Image from "next/image";
 import { CheckCircle2, ChevronRight, Star, Award, Globe, Sparkles, Apple, PawPrint, Droplets, Pill, Factory, Shield, Zap, Layers, Package } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "INKO Custom Labels — B2B Label Manufacturer China",
-  description: "Professional B2B custom label manufacturer in China. Cosmetic, food, beverage, pet food labels. ISO 9001, Low MOQ 500 rolls, 60+ countries served.",
+  title: "INKO Custom Labels — B2B Label Manufacturer China | Low MOQ, Fast Turnaround",
+  description: "INKO Custom Labels: ISO 9001 certified B2B label manufacturer in Xi'an, China. Cosmetic, food, beverage, pet food, supplement labels. Low MOQ 500 rolls, 7-day samples, DHL worldwide shipping to 60+ countries.",
+  keywords: ["custom label manufacturer China", "B2B label printing", "low MOQ labels", "cosmetic label manufacturer", "food label printing", "private label manufacturer"],
+  alternates: { canonical: "https://inkolabels.com" },
+  openGraph: {
+    title: "INKO Custom Labels — B2B Label Manufacturer China",
+    description: "ISO 9001 certified B2B label manufacturer. Low MOQ 500 rolls, 7-day samples, worldwide shipping.",
+    url: "https://inkolabels.com",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "INKO Custom Labels" }],
+  },
 };
 
 const stats = [

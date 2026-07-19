@@ -1,22 +1,8 @@
-"use client";
+import type { Metadata } from "next";
 import Link from "next/link";
-import { useState } from "react";
 import { notFound } from "next/navigation";
-import { ChevronRight, CheckCircle2, Building2, Rocket, Factory, Package, Layers, Users, Award, Clock, Truck, Headphones, Plus, Minus } from "lucide-react";
-
-// ─── FAQ Accordion ────────────────────────────────────────────────────────────
-function FaqItem({ q, a }: { q: string; a: string }) {
-  const [open, setOpen] = useState(false);
-  return (
-    <div className="border-b border-gray-200 last:border-0">
-      <button className="w-full flex items-center justify-between py-4 text-left gap-4" onClick={() => setOpen(!open)}>
-        <span className="font-semibold text-[#0F2744] text-sm">{q}</span>
-        {open ? <Minus className="w-4 h-4 text-[#E8A020] flex-shrink-0" /> : <Plus className="w-4 h-4 text-[#E8A020] flex-shrink-0" />}
-      </button>
-      {open && <p className="text-gray-600 text-sm leading-relaxed pb-4">{a}</p>}
-    </div>
-  );
-}
+import { ChevronRight, CheckCircle2, Building2, Rocket, Factory, Package, Layers, Users, Award, Clock, Truck, Headphones } from "lucide-react";
+import FaqItem from "@/components/FaqItem";
 
 const solutions = [
   {
@@ -320,6 +306,24 @@ const solutions = [
     ],
   },
 ];
+
+// ─── SEO ─────────────────────────────────────────────────────────────────────
+export async function generateStaticParams() {
+  return solutions.map((s) => ({ slug: s.slug }));
+}
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const solution = solutions.find((s) => s.slug === params.slug);
+  if (!solution) return {};
+  const title = `${solution.title} — Custom Label Solutions | INKO`;
+  const description = solution.longDesc.slice(0, 155) + "…";
+  return {
+    title,
+    description,
+    alternates: { canonical: `https://inkolabels.com/solutions/${solution.slug}` },
+    openGraph: { title, description, url: `https://inkolabels.com/solutions/${solution.slug}` },
+  };
+}
 
 export default function SolutionPage({ params }: { params: { slug: string } }) {
   const solution = solutions.find((s) => s.slug === params.slug);

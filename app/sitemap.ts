@@ -3,19 +3,33 @@ import { MetadataRoute } from "next";
 const BASE_URL = "https://inkolabels.com";
 
 const productSlugs = [
-  "cosmetic-labels",
-  "essential-oil-labels",
-  "peptide-labels",
-  "food-labels",
-  "beverage-labels",
-  "wine-spirits-labels",
-  "supplement-labels",
-  "pet-food-labels",
-  "household-labels",
-  "automotive-labels",
-  "industrial-labels",
-  "electronics-labels",
+  // by industry
+  "cosmetic-labels", "essential-oil-labels", "peptide-labels",
+  "food-labels", "beverage-labels", "wine-spirits-labels",
+  "supplement-labels", "pet-food-labels", "household-labels",
+  "automotive-labels", "industrial-labels", "electronics-labels",
   "agricultural-labels",
+  // by material
+  "paper-labels", "kraft-labels", "bopp-labels", "clear-labels",
+  "metallic-labels", "pe-film-labels", "pet-film-labels", "thermal-labels",
+  // specialty / function
+  "waterproof-labels", "oil-resistant-labels", "freezer-labels",
+  "chemical-resistant-labels", "high-temp-labels", "high-tack-labels",
+  "removable-labels", "tamper-evident-labels", "resealable-labels",
+  "barcode-labels", "roll-labels", "short-run-labels",
+];
+
+const solutionSlugs = [
+  "brand-owners", "startups-dtc", "oem-odm", "co-packers",
+  "packaging-companies", "distributors", "low-moq", "fast-sampling",
+  "private-label", "global-shipping", "quality-assurance", "long-term-supply",
+];
+
+const capabilitySlugs = [
+  "flexo-printing", "foil-die-cutting", "hot-lamination",
+  "inspection-slitting", "spot-uv", "embossing",
+  "soft-touch-matte", "digital-printing", "die-cutting",
+  "variable-data", "cold-foil", "screen-printing",
 ];
 
 const blogSlugs = [
@@ -34,21 +48,37 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/about`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE_URL}/blog`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
     { url: `${BASE_URL}/contact`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/privacy`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
+    { url: `${BASE_URL}/terms`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
   ];
 
   const productPages: MetadataRoute.Sitemap = productSlugs.map((slug) => ({
     url: `${BASE_URL}/products/${slug}`,
     lastModified: new Date(),
-    changeFrequency: "monthly",
+    changeFrequency: "monthly" as const,
     priority: 0.8,
+  }));
+
+  const solutionPages: MetadataRoute.Sitemap = solutionSlugs.map((slug) => ({
+    url: `${BASE_URL}/solutions/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  const capabilityPages: MetadataRoute.Sitemap = capabilitySlugs.map((slug) => ({
+    url: `${BASE_URL}/capabilities/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
   }));
 
   const blogPages: MetadataRoute.Sitemap = blogSlugs.map((slug) => ({
     url: `${BASE_URL}/blog/${slug}`,
     lastModified: new Date(),
-    changeFrequency: "yearly",
+    changeFrequency: "monthly" as const,
     priority: 0.6,
   }));
 
-  return [...staticPages, ...productPages, ...blogPages];
+  return [...staticPages, ...productPages, ...solutionPages, ...capabilityPages, ...blogPages];
 }

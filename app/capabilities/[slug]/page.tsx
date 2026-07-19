@@ -1,22 +1,8 @@
-"use client";
+import type { Metadata } from "next";
 import Link from "next/link";
-import { useState } from "react";
 import { notFound } from "next/navigation";
-import { ChevronRight, CheckCircle2, Printer, Layers, Zap, Eye, Scissors, Sparkles, Settings, Award, Clock, Truck, Headphones, Plus, Minus } from "lucide-react";
-
-// ─── FAQ Accordion ────────────────────────────────────────────────────────────
-function FaqItem({ q, a }: { q: string; a: string }) {
-  const [open, setOpen] = useState(false);
-  return (
-    <div className="border-b border-gray-200 last:border-0">
-      <button className="w-full flex items-center justify-between py-4 text-left gap-4" onClick={() => setOpen(!open)}>
-        <span className="font-semibold text-[#0F2744] text-sm">{q}</span>
-        {open ? <Minus className="w-4 h-4 text-[#E8A020] flex-shrink-0" /> : <Plus className="w-4 h-4 text-[#E8A020] flex-shrink-0" />}
-      </button>
-      {open && <p className="text-gray-600 text-sm leading-relaxed pb-4">{a}</p>}
-    </div>
-  );
-}
+import { ChevronRight, CheckCircle2, Printer, Layers, Zap, Eye, Scissors, Sparkles, Settings, Award, Clock, Truck, Headphones } from "lucide-react";
+import FaqItem from "@/components/FaqItem";
 
 const capabilities = [
   {
@@ -308,6 +294,24 @@ const capabilities = [
     ],
   },
 ];
+
+// ─── SEO ─────────────────────────────────────────────────────────────────────
+export async function generateStaticParams() {
+  return capabilities.map((c) => ({ slug: c.slug }));
+}
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const cap = capabilities.find((c) => c.slug === params.slug);
+  if (!cap) return {};
+  const title = `${cap.title} — Label Manufacturing Capabilities | INKO`;
+  const description = cap.longDesc.slice(0, 155) + "…";
+  return {
+    title,
+    description,
+    alternates: { canonical: `https://inkolabels.com/capabilities/${cap.slug}` },
+    openGraph: { title, description, url: `https://inkolabels.com/capabilities/${cap.slug}` },
+  };
+}
 
 export default function CapabilityPage({ params }: { params: { slug: string } }) {
   const capability = capabilities.find((c) => c.slug === params.slug);

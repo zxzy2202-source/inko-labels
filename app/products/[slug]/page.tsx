@@ -1,9 +1,9 @@
-"use client";
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
 import { notFound } from "next/navigation";
-import { ChevronRight, CheckCircle2, Sparkles, Droplets, FlaskConical, Apple, Wine, Beer, Pill, PawPrint, Home, Car, Factory, Cpu, Leaf, FileText, Package, Layers, Shield, Thermometer, Zap, RotateCcw, AlertTriangle, Snowflake, Barcode, Scroll, Printer, Plus, Minus, Award, Clock, Truck, Headphones } from "lucide-react";
+import FaqItem from "@/components/FaqItem";
+import { ChevronRight, CheckCircle2, Sparkles, Droplets, FlaskConical, Apple, Wine, Beer, Pill, PawPrint, Home, Car, Factory, Cpu, Leaf, FileText, Package, Layers, Shield, Thermometer, Zap, RotateCcw, AlertTriangle, Snowflake, Barcode, Scroll, Printer, Award, Clock, Truck, Headphones } from "lucide-react";
 
 // ─── Industry Products ───────────────────────────────────────────────────────
 const industryProducts = [
@@ -1270,27 +1270,34 @@ const materialProducts = [
 // ─── All products combined ────────────────────────────────────────────────────
 const allProducts = [...industryProducts, ...materialProducts];
 
-// ─── FAQ Accordion Item ───────────────────────────────────────────────────────
-function FaqItem({ q, a }: { q: string; a: string }) {
-  const [open, setOpen] = useState(false);
-  return (
-    <div className="border-b border-gray-200 last:border-0">
-      <button
-        className="w-full flex items-center justify-between py-4 text-left gap-4"
-        onClick={() => setOpen(!open)}
-      >
-        <span className="font-semibold text-[#0F2744] text-sm">{q}</span>
-        {open ? (
-          <Minus className="w-4 h-4 text-[#E8A020] flex-shrink-0" />
-        ) : (
-          <Plus className="w-4 h-4 text-[#E8A020] flex-shrink-0" />
-        )}
-      </button>
-      {open && (
-        <p className="text-gray-600 text-sm leading-relaxed pb-4">{a}</p>
-      )}
-    </div>
-  );
+// ─── SEO: generateStaticParams & generateMetadata ────────────────────────────
+export async function generateStaticParams() {
+  return allProducts.map((p) => ({ slug: p.slug }));
+}
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const product = allProducts.find((p) => p.slug === params.slug);
+  if (!product) return {};
+  const title = `${product.title} — Custom Label Manufacturer China`;
+  const description = `${product.longDesc.slice(0, 155)}…`;
+  return {
+    title,
+    description,
+    keywords: [
+      product.title.toLowerCase(),
+      "custom labels China",
+      "B2B label manufacturer",
+      "low MOQ labels",
+      ...product.tags.map(t => t.toLowerCase()),
+    ],
+    alternates: { canonical: `https://inkolabels.com/products/${product.slug}` },
+    openGraph: {
+      title,
+      description,
+      url: `https://inkolabels.com/products/${product.slug}`,
+      images: [{ url: product.img.startsWith("/") ? `https://inkolabels.com${product.img}` : product.img, width: 1200, height: 630, alt: product.title }],
+    },
+  };
 }
 
 export default function ProductDetailPage({ params }: { params: { slug: string } }) {

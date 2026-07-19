@@ -9,7 +9,7 @@ const WhatsAppFloat = dynamic(() => import("@/components/WhatsAppFloat"), { ssr:
 export const metadata: Metadata = {
   metadataBase: new URL("https://inkolabels.com"),
   title: {
-    default: "INKO Custom Labels — B2B Label Manufacturer China | Low MOQ, Fast Turnaround",
+    default: "INKO Custom Labels - B2B Label Manufacturer China | Low MOQ, Fast Turnaround",
     template: "%s | INKO Custom Labels",
   },
   description: "Professional B2B custom label manufacturer in China. Cosmetic, food, beverage, pet food, supplement labels. ISO 9001 certified, 15+ years export, 60+ countries. Low MOQ 500 rolls.",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "INKO Custom Labels — B2B Label Manufacturer China",
+    title: "INKO Custom Labels - B2B Label Manufacturer China",
     description: "Professional B2B custom label manufacturer. ISO 9001 certified, Low MOQ 500 rolls, fast turnaround, worldwide shipping to 60+ countries.",
     type: "website",
     locale: "en_US",
@@ -56,13 +56,13 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "INKO Custom Labels — B2B Label Manufacturer China",
+        alt: "INKO Custom Labels - B2B Label Manufacturer China",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "INKO Custom Labels — B2B Label Manufacturer China",
+    title: "INKO Custom Labels - B2B Label Manufacturer China",
     description: "Professional B2B custom label manufacturer. ISO 9001 certified, Low MOQ 500 rolls, worldwide shipping.",
     images: ["/og-image.jpg"],
   },
@@ -71,6 +71,12 @@ export const metadata: Metadata = {
     languages: {
       "en": "https://inkolabels.com",
       "es": "https://inkolabels.com/es",
+      "fr": "https://inkolabels.com/fr",
+      "pt": "https://inkolabels.com/pt",
+      "de": "https://inkolabels.com/de",
+      "ru": "https://inkolabels.com/ru",
+      "ja": "https://inkolabels.com/ja",
+      "ar": "https://inkolabels.com/ar",
       "x-default": "https://inkolabels.com",
     },
   },

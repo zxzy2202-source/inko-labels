@@ -4,8 +4,45 @@ import Image from "next/image";
 import { ChevronRight, Sparkles, Droplets, FlaskConical, Apple, Wine, Beer, Pill, PawPrint, Home, Car, Factory, Cpu, Leaf, Award, Clock, Truck, Headphones, FileText, Layers, Zap, Shield, Thermometer, Tag } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Custom Label Products — INKO Custom Labels",
-  description: "Browse 40+ custom label types: cosmetic, food, beverage, pet food, supplement, industrial labels. Low MOQ, worldwide shipping.",
+  title: "Custom Label Products - 40+ Types",
+  description: "Browse 40+ custom label types for B2B buyers: cosmetic, food, beverage, pet food, supplement, industrial labels. Low MOQ from 500 rolls, worldwide shipping from China.",
+  alternates: {
+    canonical: "https://inkolabels.com/products",
+    languages: {
+      "en": "https://inkolabels.com/products",
+      "es": "https://inkolabels.com/es/products",
+      "fr": "https://inkolabels.com/fr/products",
+      "pt": "https://inkolabels.com/pt/products",
+      "de": "https://inkolabels.com/de/products",
+      "ru": "https://inkolabels.com/ru/products",
+      "ja": "https://inkolabels.com/ja/products",
+      "ar": "https://inkolabels.com/ar/products",
+      "x-default": "https://inkolabels.com/products",
+    },
+  },
+  openGraph: {
+    title: "Custom Label Products - 40+ Types | INKO Custom Labels",
+    description: "Browse 40+ custom label types for B2B buyers: cosmetic, food, beverage, pet food, supplement, industrial labels. Low MOQ from 500 rolls, worldwide shipping from China.",
+    url: "https://inkolabels.com/products",
+    type: "website",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "INKO Custom Labels - 40+ Custom Label Types for B2B Buyers",
+      },
+    ],
+  },
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://inkolabels.com" },
+    { "@type": "ListItem", "position": 2, "name": "Products", "item": "https://inkolabels.com/products" },
+  ],
 };
 
 const byIndustry = [
@@ -23,6 +60,50 @@ const byIndustry = [
   { icon: Cpu, title: "Electronics & Battery", desc: "ESD-safe, high-temperature, small format", tags: ["ESD-SAFE","HIGH-TEMP","SMALL FORMAT"], href: "/products/electronics-labels", img: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80" },
   { icon: Leaf, title: "Agricultural Product", desc: "UV-resistant, weatherproof, outdoor-rated", tags: ["UV-RESISTANT","WEATHERPROOF","OUTDOOR"], href: "/products/agricultural-labels", img: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80" },
 ];
+
+const itemListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Custom Label Products - INKO Custom Labels",
+  "url": "https://inkolabels.com/products",
+  "numberOfItems": byIndustry.length,
+  "itemListElement": byIndustry.map((p, i) => ({
+    "@type": "ListItem",
+    "position": i + 1,
+    "name": p.title,
+    "description": p.desc,
+    "url": `https://inkolabels.com${p.href}`,
+  })),
+};
+
+const faqItems = [
+  {
+    q: "What is the minimum order quantity (MOQ) for custom labels?",
+    a: "INKO Custom Labels offers a low MOQ starting from 500 rolls per design. This makes us ideal for startups, DTC brands, and B2B buyers who need flexibility without large upfront commitments.",
+  },
+  {
+    q: "How long does it take to produce custom labels?",
+    a: "Standard production lead time is 7-10 business days after artwork approval. Rush orders and samples can be arranged in 3-5 days. DHL/FedEx worldwide shipping is available.",
+  },
+  {
+    q: "What label materials does INKO offer?",
+    a: "We offer 8+ label materials including paper, kraft, white BOPP, clear BOPP, metallic BOPP, PE film, PET film, and thermal transfer labels - covering all major B2B packaging needs.",
+  },
+  {
+    q: "Are INKO labels suitable for food and cosmetic products?",
+    a: "Yes. Our food labels are FDA-compliant and our cosmetic labels meet EU/US cosmetic packaging standards. We are ISO 9001:2015 certified with 15+ years of export experience.",
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqItems.map(f => ({
+    "@type": "Question",
+    "name": f.q,
+    "acceptedAnswer": { "@type": "Answer", "text": f.a },
+  })),
+};
 
 const byMaterial = [
   { icon: FileText, title: "Paper Labels", href: "/products/paper-labels", desc: "Standard & premium paper" },
@@ -53,15 +134,24 @@ const specialty = [
 export default function ProductsPage() {
   return (
     <>
-      {/* ── Hero ─────────────────────────────────────────────────────────── */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+
+      {/* Hero */}
       <section className="bg-[#0F2744] pt-32 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-white/50 text-xs mb-6">
+            <Link href="/" className="hover:text-[#E8A020] transition-colors">Home</Link>
+            <ChevronRight className="w-3 h-3" />
+            <span className="text-white/80">Products</span>
+          </nav>
           <div className="text-[#E8A020] text-xs font-bold tracking-widest uppercase mb-3">Product Catalog</div>
           <h1 className="font-display text-5xl lg:text-6xl font-black text-white uppercase leading-tight mb-4" style={{ fontFamily: "var(--font-barlow)" }}>
             Custom Labels<br /><span className="text-[#E8A020]">For Every Industry</span>
           </h1>
           <p className="text-white/70 max-w-2xl text-lg mb-8">
-            From cosmetics and food to pet food and industrial — INKO Custom Labels manufactures precision labels for 13+ industries. Low MOQ from 500 rolls, fast turnaround, worldwide B2B shipping.
+            From cosmetics and food to pet food and industrial - INKO Custom Labels manufactures precision labels for 13+ industries. Low MOQ from 500 rolls, fast turnaround, worldwide B2B shipping.
           </p>
           <div className="flex flex-wrap gap-4">
             <Link href="/contact" className="inline-flex items-center gap-2 bg-[#E8A020] hover:bg-[#d4911c] text-[#0F2744] font-bold px-8 py-4 rounded text-sm uppercase tracking-wide transition-all duration-200 hover:scale-[1.02]" style={{ fontFamily: "var(--font-barlow)" }}>
@@ -74,7 +164,7 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      {/* ── Trust Bar ────────────────────────────────────────────────────── */}
+      {/* Trust Bar */}
       <section className="bg-[#E8A020] py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
@@ -93,12 +183,12 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      {/* ── By Industry ──────────────────────────────────────────────────── */}
-      <section className="py-20 bg-white">
+      {/* By Industry */}
+      <section className="py-20 bg-white" aria-labelledby="by-industry-heading">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-10">
             <div className="text-[#E8A020] text-xs font-bold tracking-widest uppercase mb-2">By Industry</div>
-            <h2 className="font-display text-3xl font-black text-[#0F2744] uppercase" style={{ fontFamily: "var(--font-barlow)" }}>
+            <h2 id="by-industry-heading" className="font-display text-3xl font-black text-[#0F2744] uppercase" style={{ fontFamily: "var(--font-barlow)" }}>
               Industry-Specific Label Solutions
             </h2>
           </div>
@@ -128,12 +218,12 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      {/* ── By Material ──────────────────────────────────────────────────── */}
-      <section className="py-16 bg-gray-50 border-t border-gray-100">
+      {/* By Material */}
+      <section className="py-16 bg-gray-50 border-t border-gray-100" aria-labelledby="by-material-heading">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-10">
             <div className="text-[#E8A020] text-xs font-bold tracking-widest uppercase mb-2">By Material</div>
-            <h2 className="font-display text-3xl font-black text-[#0F2744] uppercase" style={{ fontFamily: "var(--font-barlow)" }}>
+            <h2 id="by-material-heading" className="font-display text-3xl font-black text-[#0F2744] uppercase" style={{ fontFamily: "var(--font-barlow)" }}>
               Label Materials We Work With
             </h2>
           </div>
@@ -156,12 +246,12 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      {/* ── Specialty & Performance ───────────────────────────────────────── */}
-      <section className="py-16 bg-white border-t border-gray-100">
+      {/* Specialty */}
+      <section className="py-16 bg-white border-t border-gray-100" aria-labelledby="specialty-heading">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-10">
-            <div className="text-[#E8A020] text-xs font-bold tracking-widest uppercase mb-2">Performance & Specialty</div>
-            <h2 className="font-display text-3xl font-black text-[#0F2744] uppercase" style={{ fontFamily: "var(--font-barlow)" }}>
+            <div className="text-[#E8A020] text-xs font-bold tracking-widest uppercase mb-2">Performance &amp; Specialty</div>
+            <h2 id="specialty-heading" className="font-display text-3xl font-black text-[#0F2744] uppercase" style={{ fontFamily: "var(--font-barlow)" }}>
               Specialty Label Solutions
             </h2>
           </div>
@@ -181,7 +271,28 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      {/* ── CTA ──────────────────────────────────────────────────────────── */}
+      {/* FAQ */}
+      <section className="py-16 bg-gray-50" aria-labelledby="faq-heading">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-[#E8A020] text-xs font-bold tracking-widest uppercase mb-2">FAQ</div>
+          <h2 id="faq-heading" className="font-display text-3xl font-black text-[#0F2744] uppercase mb-8" style={{ fontFamily: "var(--font-barlow)" }}>
+            Frequently Asked Questions
+          </h2>
+          <div className="space-y-4">
+            {faqItems.map((faq, i) => (
+              <details key={i} className="bg-white rounded-xl border border-gray-100 overflow-hidden group">
+                <summary className="flex items-center justify-between px-6 py-4 cursor-pointer font-semibold text-[#0F2744] text-sm hover:text-[#E8A020] transition-colors list-none">
+                  {faq.q}
+                  <ChevronRight className="w-4 h-4 shrink-0 transition-transform group-open:rotate-90" />
+                </summary>
+                <div className="px-6 pb-4 text-gray-600 text-sm leading-relaxed">{faq.a}</div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
       <section className="py-16 bg-[#0F2744]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-display text-4xl font-black text-white uppercase mb-4" style={{ fontFamily: "var(--font-barlow)" }}>

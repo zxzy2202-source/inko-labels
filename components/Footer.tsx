@@ -48,7 +48,7 @@ export default function Footer() {
             <h4 className="text-white font-bold text-sm uppercase tracking-widest mb-4" style={{ fontFamily: "var(--font-barlow)" }}>Contact</h4>
             <ul className="space-y-3 text-sm text-white/60">
               <li className="flex items-start gap-2"><Mail className="w-4 h-4 text-[#E8A020] flex-shrink-0 mt-0.5" /><a href="mailto:info@inkolabels.com" className="hover:text-[#E8A020] transition-colors">info@inkolabels.com</a></li>
-              <li className="flex items-start gap-2"><Phone className="w-4 h-4 text-[#E8A020] flex-shrink-0 mt-0.5" /><span>+86 139 0000 0000</span></li>
+              <li className="flex items-start gap-2"><Phone className="w-4 h-4 text-[#E8A020] flex-shrink-0 mt-0.5" /><a href="tel:+8613572821237" className="hover:text-[#E8A020] transition-colors">+86 135 7282 1237</a></li>
               <li className="flex items-start gap-2"><MapPin className="w-4 h-4 text-[#E8A020] flex-shrink-0 mt-0.5" /><span>Xi&apos;an, Shaanxi Province, China</span></li>
               <li className="flex items-start gap-2"><Clock className="w-4 h-4 text-[#E8A020] flex-shrink-0 mt-0.5" /><span>Mon–Sat 9:00am–6:00pm CST</span></li>
             </ul>

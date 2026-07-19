@@ -25,83 +25,100 @@ const languages = [
   { code: "ja", label: "日本語",     flag: "🇯🇵", region: "Asia" },
 ];
 
-const industries = [
-  { label: "Cosmetic & Skincare Labels",    href: "/products/cosmetic-labels",    icon: Sparkles },
-  { label: "Essential Oil Labels",          href: "/products/essential-oil-labels", icon: Droplets },
-  { label: "Peptide & Small Vial Labels",   href: "/products/peptide-labels",     icon: FlaskConical },
-  { label: "Food Packaging Labels",         href: "/products/food-labels",        icon: Apple },
-  { label: "Beverage Bottle Labels",        href: "/products/beverage-labels",    icon: Beer },
-  { label: "Wine & Spirits Labels",         href: "/products/wine-spirits-labels", icon: Wine },
-  { label: "Supplement Labels",             href: "/products/supplement-labels",  icon: Pill },
-  { label: "Pet Food & Pet Care Labels",    href: "/products/pet-food-labels",    icon: PawPrint },
-  { label: "Household & Cleaning Labels",   href: "/products/household-labels",   icon: Home },
-  { label: "Automotive & Lubricant Labels", href: "/products/automotive-labels",  icon: Car },
-  { label: "Industrial & Chemical Labels",  href: "/products/industrial-labels",  icon: Factory },
-  { label: "Electronics & Battery Labels",  href: "/products/electronics-labels", icon: Cpu },
-  { label: "Agricultural Product Labels",   href: "/products/agricultural-labels", icon: Leaf },
-];
+type NavItem = { label: string; href: string; icon: React.ElementType };
+type TNav = ReturnType<typeof getTranslations>["nav"];
 
-const materials = [
-  { label: "Paper Labels",                     href: "/products/paper-labels",   icon: FileText },
-  { label: "Kraft & Textured Paper Labels",    href: "/products/kraft-labels",   icon: Layers },
-  { label: "White BOPP Labels",                href: "/products/bopp-labels",    icon: Square },
-  { label: "Clear BOPP Labels",                href: "/products/clear-labels",   icon: Eye },
-  { label: "Metallic BOPP Labels",             href: "/products/metallic-labels", icon: Zap },
-  { label: "PE Film Labels",                   href: "/products/pe-film-labels", icon: Film },
-  { label: "PET & Durable Film Labels",        href: "/products/pet-film-labels", icon: Shield },
-  { label: "Direct Thermal & Transfer Labels", href: "/products/thermal-labels", icon: Thermometer },
-];
+function getIndustries(ni: TNav["navItems"]): NavItem[] {
+  return [
+    { label: ni.cosmeticLabels,    href: "/products/cosmetic-labels",    icon: Sparkles },
+    { label: ni.essentialOilLabels, href: "/products/essential-oil-labels", icon: Droplets },
+    { label: ni.peptideLabels,     href: "/products/peptide-labels",     icon: FlaskConical },
+    { label: ni.foodLabels,        href: "/products/food-labels",        icon: Apple },
+    { label: ni.beverageLabels,    href: "/products/beverage-labels",    icon: Beer },
+    { label: ni.wineLabels,        href: "/products/wine-spirits-labels", icon: Wine },
+    { label: ni.supplementLabels,  href: "/products/supplement-labels",  icon: Pill },
+    { label: ni.petFoodLabels,     href: "/products/pet-food-labels",    icon: PawPrint },
+    { label: ni.householdLabels,   href: "/products/household-labels",   icon: Home },
+    { label: ni.automotiveLabels,  href: "/products/automotive-labels",  icon: Car },
+    { label: ni.industrialLabels,  href: "/products/industrial-labels",  icon: Factory },
+    { label: ni.electronicsLabels, href: "/products/electronics-labels", icon: Cpu },
+    { label: ni.agriculturalLabels, href: "/products/agricultural-labels", icon: Leaf },
+  ];
+}
 
-const performance = [
-  { label: "Waterproof Labels",              href: "/products/waterproof-labels",        icon: Droplet },
-  { label: "Oil-Resistant Labels",           href: "/products/oil-resistant-labels",     icon: Flame },
-  { label: "Freezer & Low-Temp Labels",      href: "/products/freezer-labels",           icon: Snowflake },
-  { label: "Chemical-Resistant Labels",      href: "/products/chemical-resistant-labels", icon: FlaskConical },
-  { label: "High-Temperature Labels",        href: "/products/high-temp-labels",         icon: Thermometer },
-  { label: "High-Tack Labels",               href: "/products/high-tack-labels",         icon: Layers },
-  { label: "Removable Labels",               href: "/products/removable-labels",         icon: Repeat },
-  { label: "Tamper-Evident Labels",          href: "/products/tamper-evident-labels",    icon: AlertTriangle },
-  { label: "Resealable Wet Wipes Labels",    href: "/products/resealable-labels",        icon: Package },
-  { label: "Barcode & Variable Data Labels", href: "/products/barcode-labels",           icon: BarChart2 },
-  { label: "Custom Printed Roll Labels",     href: "/products/roll-labels",              icon: Repeat },
-  { label: "Digital Short-Run Labels",       href: "/products/short-run-labels",         icon: Zap },
-];
+function getMaterials(ni: TNav["navItems"]): NavItem[] {
+  return [
+    { label: ni.paperLabels,   href: "/products/paper-labels",   icon: FileText },
+    { label: ni.kraftLabels,   href: "/products/kraft-labels",   icon: Layers },
+    { label: ni.boppLabels,    href: "/products/bopp-labels",    icon: Square },
+    { label: ni.clearLabels,   href: "/products/clear-labels",   icon: Eye },
+    { label: ni.metallicLabels, href: "/products/metallic-labels", icon: Zap },
+    { label: ni.peFilmLabels,  href: "/products/pe-film-labels", icon: Film },
+    { label: ni.petFilmLabels, href: "/products/pet-film-labels", icon: Shield },
+    { label: ni.thermalLabels, href: "/products/thermal-labels", icon: Thermometer },
+  ];
+}
 
-const solutionsByBuyer = [
-  { label: "For Brand Owners",              href: "/solutions/brand-owners",        icon: Star },
-  { label: "For Startups & DTC Brands",     href: "/solutions/startups-dtc",        icon: Rocket },
-  { label: "For OEM & ODM Factories",       href: "/solutions/oem-odm",             icon: Settings },
-  { label: "For Contract Manufacturers",    href: "/solutions/co-packers",          icon: Package },
-  { label: "For Packaging Companies",       href: "/solutions/packaging-companies", icon: Building2 },
-  { label: "For Label Distributors",        href: "/solutions/distributors",        icon: TrendingUp },
-];
+function getPerformance(ni: TNav["navItems"]): NavItem[] {
+  return [
+    { label: ni.waterprofLabels,    href: "/products/waterproof-labels",        icon: Droplet },
+    { label: ni.oilResistantLabels, href: "/products/oil-resistant-labels",     icon: Flame },
+    { label: ni.freezerLabels,      href: "/products/freezer-labels",           icon: Snowflake },
+    { label: ni.chemicalLabels,     href: "/products/chemical-resistant-labels", icon: FlaskConical },
+    { label: ni.highTempLabels,     href: "/products/high-temp-labels",         icon: Thermometer },
+    { label: ni.highTackLabels,     href: "/products/high-tack-labels",         icon: Layers },
+    { label: ni.removableLabels,    href: "/products/removable-labels",         icon: Repeat },
+    { label: ni.tamperLabels,       href: "/products/tamper-evident-labels",    icon: AlertTriangle },
+    { label: ni.resealableLabels,   href: "/products/resealable-labels",        icon: Package },
+    { label: ni.barcodeLabels,      href: "/products/barcode-labels",           icon: BarChart2 },
+    { label: ni.rollLabels,         href: "/products/roll-labels",              icon: Repeat },
+    { label: ni.shortRunLabels,     href: "/products/short-run-labels",         icon: Zap },
+  ];
+}
 
-const solutionsBySourcing = [
-  { label: "Low-MOQ Custom Label Printing", href: "/solutions/low-moq",          icon: Layers },
-  { label: "Fast Sampling & Short-Run",     href: "/solutions/fast-sampling",    icon: Zap },
-  { label: "Multi-SKU Label Management",    href: "/solutions/multi-sku",        icon: BarChart2 },
-  { label: "Color Matching & Brand Consistency", href: "/solutions/color-matching", icon: Palette },
-  { label: "Private-Label & Confidential",  href: "/solutions/private-label",    icon: Shield },
-  { label: "Long-Term Label Supply",        href: "/solutions/long-term-supply", icon: Repeat },
-];
+function getSolutionsByBuyer(ni: TNav["navItems"]): NavItem[] {
+  return [
+    { label: ni.forBrandOwners,   href: "/solutions/brand-owners",        icon: Star },
+    { label: ni.forStartups,      href: "/solutions/startups-dtc",        icon: Rocket },
+    { label: ni.forOemOdm,        href: "/solutions/oem-odm",             icon: Settings },
+    { label: ni.forCoPackers,     href: "/solutions/co-packers",          icon: Package },
+    { label: ni.forPackagingCo,   href: "/solutions/packaging-companies", icon: Building2 },
+    { label: ni.forDistributors,  href: "/solutions/distributors",        icon: TrendingUp },
+  ];
+}
 
-const printing = [
-  { label: "7-Color Resin Plate Flexo Press", href: "/capabilities/flexo-printing",   icon: Layers },
-  { label: "Adhesive-Side (Back) Printing",   href: "/capabilities/adhesive-printing", icon: Eye },
-  { label: "Variable Data & Barcode Printing",href: "/capabilities/variable-data",    icon: BarChart2 },
-  { label: "White Ink Printing",              href: "/capabilities/white-ink",        icon: Printer },
-  { label: "Multi-Color & PANTONE Matching",  href: "/capabilities/multi-color",      icon: Palette },
-];
+function getSolutionsBySourcing(ni: TNav["navItems"]): NavItem[] {
+  return [
+    { label: ni.lowMoq,          href: "/solutions/low-moq",          icon: Layers },
+    { label: ni.fastSampling,    href: "/solutions/fast-sampling",    icon: Zap },
+    { label: ni.multiSku,        href: "/solutions/multi-sku",        icon: BarChart2 },
+    { label: ni.colorMatching,   href: "/solutions/color-matching",   icon: Palette },
+    { label: ni.privateLabel,    href: "/solutions/private-label",    icon: Shield },
+    { label: ni.longTermSupply,  href: "/solutions/long-term-supply", icon: Repeat },
+  ];
+}
 
-const finishing = [
-  { label: "Inline Lamination (Gloss / Matte / Soft-Touch)", href: "/capabilities/lamination",       icon: Layers },
-  { label: "Hot Lamination Machine",                         href: "/capabilities/hot-lamination",   icon: Flame },
-  { label: "Foil Stamping + Die-Cutting High-Speed Press",   href: "/capabilities/foil-die-cutting", icon: Zap },
-  { label: "Inline Die Cutting",                             href: "/capabilities/die-cutting",      icon: Scissors },
-  { label: "Spot UV",                                        href: "/capabilities/spot-uv",          icon: Sparkles },
-  { label: "Embossing & Debossing",                          href: "/capabilities/embossing",        icon: Square },
-  { label: "Vision Inspection + Precision Slitting",         href: "/capabilities/inspection-slitting", icon: Eye },
-];
+function getPrinting(ni: TNav["navItems"]): NavItem[] {
+  return [
+    { label: ni.flexoPrinting,    href: "/capabilities/flexo-printing",   icon: Layers },
+    { label: ni.adhesivePrinting, href: "/capabilities/adhesive-printing", icon: Eye },
+    { label: ni.variableData,     href: "/capabilities/variable-data",    icon: BarChart2 },
+    { label: ni.whiteInk,         href: "/capabilities/white-ink",        icon: Printer },
+    { label: ni.multiColor,       href: "/capabilities/multi-color",      icon: Palette },
+  ];
+}
+
+function getFinishing(ni: TNav["navItems"]): NavItem[] {
+  return [
+    { label: ni.lamination,          href: "/capabilities/lamination",       icon: Layers },
+    { label: ni.hotLamination,       href: "/capabilities/hot-lamination",   icon: Flame },
+    { label: ni.foilDieCutting,      href: "/capabilities/foil-die-cutting", icon: Zap },
+    { label: ni.dieCutting,          href: "/capabilities/die-cutting",      icon: Scissors },
+    { label: ni.spotUv,              href: "/capabilities/spot-uv",          icon: Sparkles },
+    { label: ni.embossing,           href: "/capabilities/embossing",        icon: Square },
+    { label: ni.inspectionSlitting,  href: "/capabilities/inspection-slitting", icon: Eye },
+  ];
+}
 
 type DropKey = "products" | "solutions" | "capabilities" | "lang" | null;
 
@@ -147,6 +164,16 @@ export default function Navbar() {
   const lang = languages.find(l => l.code === currentLocale) || languages[0];
   const t = getTranslations(currentLocale as Locale);
   const localePath = (path: string) => currentLocale === "en" ? path : `/${currentLocale}${path === "/" ? "" : path}`;
+
+  // Build translated menu items
+  const ni = t.nav.navItems;
+  const industries = getIndustries(ni);
+  const materials = getMaterials(ni);
+  const performance = getPerformance(ni);
+  const solutionsByBuyer = getSolutionsByBuyer(ni);
+  const solutionsBySourcing = getSolutionsBySourcing(ni);
+  const printing = getPrinting(ni);
+  const finishing = getFinishing(ni);
 
   // Get the path without locale prefix
   const pathWithoutLocale = currentLocale === "en" ? pathname : pathname.replace(`/${currentLocale}`, "") || "/";

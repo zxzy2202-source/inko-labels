@@ -1,8 +1,9 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
 import { notFound } from "next/navigation";
-import { ChevronRight, CheckCircle2, Sparkles, Droplets, FlaskConical, Apple, Wine, Beer, Pill, PawPrint, Home, Car, Factory, Cpu, Leaf, FileText, Package, Layers, Shield, Thermometer, Zap, RotateCcw, AlertTriangle, Snowflake, Barcode, Scroll, Printer } from "lucide-react";
+import { ChevronRight, CheckCircle2, Sparkles, Droplets, FlaskConical, Apple, Wine, Beer, Pill, PawPrint, Home, Car, Factory, Cpu, Leaf, FileText, Package, Layers, Shield, Thermometer, Zap, RotateCcw, AlertTriangle, Snowflake, Barcode, Scroll, Printer, Plus, Minus, Award, Clock, Truck, Headphones } from "lucide-react";
 
 // ─── Industry Products ───────────────────────────────────────────────────────
 const industryProducts = [
@@ -14,7 +15,7 @@ const industryProducts = [
     desc: "Premium labels for skincare, serums, haircare, and cosmetics. Foil stamping, soft-touch matte, embossed, and spot UV finishes available.",
     longDesc: "INKO Custom Labels specializes in high-end cosmetic and skincare label printing. Our labels are designed to enhance your brand's shelf presence with premium finishes including hot foil stamping, soft-touch matte lamination, embossing, and spot UV coating. We work with leading cosmetic brands worldwide, delivering consistent color accuracy and luxury aesthetics at competitive B2B pricing.",
     tags: ["FOIL STAMPING", "SOFT TOUCH", "EMBOSSED", "SPOT UV"],
-    img: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=1200&q=80",
+    img: "/manus-storage/product-hero-cosmetic.jpg",
     materials: ["White BOPP", "Clear BOPP", "Metallic BOPP", "Coated Paper"],
     finishes: ["Gloss Lamination", "Matte Lamination", "Soft-Touch Matte", "Hot Foil Stamping", "Embossing", "Spot UV"],
     features: [
@@ -26,6 +27,23 @@ const industryProducts = [
       "Low MOQ from 500 rolls per design",
     ],
     industries: ["Skincare", "Haircare", "Makeup", "Fragrance", "Body Care"],
+    specs: {
+      moq: "500 rolls / design",
+      leadTime: "7–10 business days",
+      sampleTime: "3–5 business days",
+      printColors: "Up to 7 colors (CMYK + spot)",
+      minSize: "10mm × 20mm",
+      maxSize: "200mm × 300mm",
+      coreSize: "76mm (3\") standard",
+      windDirection: "Inside or outside wind",
+    },
+    faqs: [
+      { q: "What is the minimum order quantity for cosmetic labels?", a: "Our standard MOQ is 500 rolls per design. For digital short-run printing, we can accommodate orders as low as 100 labels for sampling purposes." },
+      { q: "Can you match our exact Pantone color?", a: "Yes. We use a 7-color resin-plate flexo press with PANTONE matching capability. We provide a color proof before mass production to ensure exact color accuracy." },
+      { q: "What materials do you recommend for serum and moisturizer bottles?", a: "We recommend White BOPP or Clear BOPP with soft-touch matte lamination for a premium feel. For glass bottles, we suggest a strong permanent adhesive to ensure long-term adhesion." },
+      { q: "Do you offer foil stamping and embossing on the same label?", a: "Yes. Our foil stamping + die-cutting high-speed press can apply hot foil stamping, embossing, and die-cutting in a single pass, which reduces production time and cost." },
+      { q: "How do I send my artwork for production?", a: "Please send us your artwork in AI, PDF, or EPS format with fonts outlined and images at 300 DPI. We provide a free pre-press review and will notify you of any issues before production." },
+    ],
   },
   {
     slug: "essential-oil-labels",
@@ -47,6 +65,23 @@ const industryProducts = [
       "Low MOQ from 500 rolls per design",
     ],
     industries: ["Aromatherapy", "Wellness", "Spa", "Natural Beauty"],
+    specs: {
+      moq: "500 rolls / design",
+      leadTime: "7–10 business days",
+      sampleTime: "3–5 business days",
+      printColors: "Up to 7 colors (CMYK + spot)",
+      minSize: "10mm × 20mm",
+      maxSize: "100mm × 150mm",
+      coreSize: "76mm (3\") standard",
+      windDirection: "Inside or outside wind",
+    },
+    faqs: [
+      { q: "Why do my essential oil labels keep falling off?", a: "Standard adhesives fail in oily environments. INKO uses specially formulated oil-resistant adhesives that maintain strong adhesion even when the bottle surface is contaminated with essential oils." },
+      { q: "Can you print on very small vials (5ml–10ml)?", a: "Yes. We specialize in small-format label printing with a minimum label size of 10mm × 20mm, suitable for 5ml roller bottles and 10ml dropper vials." },
+      { q: "What is the no-label look and how do I achieve it?", a: "The no-label look uses a clear BOPP substrate with printing on the adhesive side (back-print). When applied to a clear glass bottle, the label appears to be printed directly on the glass." },
+      { q: "Do you offer luxury finishes for essential oil labels?", a: "Yes. We offer hot foil stamping, embossing, soft-touch matte lamination, and spot UV on essential oil labels to create a premium, spa-quality aesthetic." },
+      { q: "What is your lead time for essential oil labels?", a: "Standard production takes 7–10 business days after artwork approval. Rush orders can be accommodated in 5–7 days for an additional fee." },
+    ],
   },
   {
     slug: "peptide-labels",
@@ -68,6 +103,23 @@ const industryProducts = [
       "GMP-compatible materials",
     ],
     industries: ["Pharmaceutical", "Biotech", "Research", "Nutraceutical"],
+    specs: {
+      moq: "500 rolls / design",
+      leadTime: "7–10 business days",
+      sampleTime: "3–5 business days",
+      printColors: "Up to 7 colors (CMYK + spot)",
+      minSize: "10mm × 30mm",
+      maxSize: "80mm × 120mm",
+      coreSize: "76mm (3\") standard",
+      windDirection: "Inside or outside wind",
+    },
+    faqs: [
+      { q: "What is the smallest label size you can produce?", a: "Our minimum label size for flexo printing is 10mm × 30mm. For digital printing, we can go as small as 8mm × 20mm." },
+      { q: "Can you print lot numbers and expiry dates on each label?", a: "Yes. We offer variable data printing where each label in a roll can carry unique information such as lot numbers, expiry dates, and serial numbers." },
+      { q: "Are your materials compatible with frozen storage?", a: "Yes. We offer cryogenic-grade adhesives rated to -40°C for frozen storage and cold chain applications." },
+      { q: "Do your labels comply with pharmaceutical GMP standards?", a: "Our materials are GMP-compatible and we can provide material safety data sheets (MSDS) and certificates of compliance upon request." },
+      { q: "Can you produce labels for both the vial and the outer box?", a: "Yes. We can produce labels for vials, ampoules, and outer cartons in the same order, ensuring consistent branding across all packaging components." },
+    ],
   },
   {
     slug: "food-labels",
@@ -77,7 +129,7 @@ const industryProducts = [
     desc: "FDA-compliant labels for food products, sauces, condiments, and specialty foods.",
     longDesc: "Food labels must meet strict regulatory requirements while standing out on crowded retail shelves. INKO produces FDA-compliant food labels using food-safe inks and adhesives, with options for waterproof, freezer-grade, and high-moisture-resistant constructions.",
     tags: ["FDA COMPLIANT", "WATERPROOF", "FREEZER-SAFE", "FOOD-SAFE"],
-    img: "https://images.unsplash.com/photo-1606914501449-5a96b6ce24ca?w=1200&q=80",
+    img: "/manus-storage/product-hero-food.jpg",
     materials: ["White BOPP", "Clear BOPP", "Coated Paper", "Kraft Paper"],
     finishes: ["Gloss Lamination", "Matte Lamination", "Soft-Touch Matte"],
     features: [
@@ -89,6 +141,23 @@ const industryProducts = [
       "Low MOQ from 500 rolls per design",
     ],
     industries: ["Sauces & Condiments", "Snacks", "Specialty Food", "Organic Products", "Frozen Food"],
+    specs: {
+      moq: "500 rolls / design",
+      leadTime: "7–10 business days",
+      sampleTime: "3–5 business days",
+      printColors: "Up to 7 colors (CMYK + spot)",
+      minSize: "20mm × 30mm",
+      maxSize: "200mm × 300mm",
+      coreSize: "76mm (3\") standard",
+      windDirection: "Inside or outside wind",
+    },
+    faqs: [
+      { q: "Are your food labels FDA compliant?", a: "Yes. We use FDA-compliant food-safe inks and adhesives for all food contact labels. We can provide compliance documentation upon request." },
+      { q: "Can your labels withstand refrigerator and freezer conditions?", a: "Yes. We offer moisture-resistant and freezer-grade adhesive options. Our freezer labels are rated to -20°C for standard freezer applications and -40°C for deep freeze." },
+      { q: "Can you print nutrition facts panels with small text?", a: "Yes. Our 7-color flexo press can print text as small as 4pt with excellent legibility, suitable for detailed nutrition facts panels and ingredient lists." },
+      { q: "Do you offer kraft paper labels for artisan food brands?", a: "Yes. We offer brown kraft, white kraft, and textured paper labels that convey a natural, artisan aesthetic popular with organic and specialty food brands." },
+      { q: "What is the turnaround time for food labels?", a: "Standard production takes 7–10 business days after artwork approval. We also offer a rush service for time-sensitive orders." },
+    ],
   },
   {
     slug: "beverage-labels",
@@ -98,7 +167,7 @@ const industryProducts = [
     desc: "Waterproof, moisture-resistant labels for water bottles, juice, energy drinks, and beverages.",
     longDesc: "Beverage labels must withstand condensation, ice buckets, and refrigeration while maintaining their appearance. INKO produces high-quality beverage labels with excellent wet-strength adhesives and moisture-resistant film substrates suitable for all bottle types.",
     tags: ["WATERPROOF", "MOISTURE-RESISTANT", "ICE BUCKET PROOF", "WRAP-AROUND"],
-    img: "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=1200&q=80",
+    img: "/manus-storage/product-hero-beverage.jpg",
     materials: ["Clear BOPP", "White BOPP", "Metallic BOPP", "PE Film"],
     finishes: ["Gloss Lamination", "Matte Lamination", "Soft-Touch Matte", "Foil Stamping"],
     features: [
@@ -110,6 +179,23 @@ const industryProducts = [
       "Low MOQ from 500 rolls per design",
     ],
     industries: ["Water & Juice", "Energy Drinks", "Sports Drinks", "Tea & Coffee", "Craft Beverages"],
+    specs: {
+      moq: "500 rolls / design",
+      leadTime: "7–10 business days",
+      sampleTime: "3–5 business days",
+      printColors: "Up to 7 colors (CMYK + spot)",
+      minSize: "30mm × 50mm",
+      maxSize: "200mm × 300mm",
+      coreSize: "76mm (3\") standard",
+      windDirection: "Inside or outside wind",
+    },
+    faqs: [
+      { q: "Will your labels survive in an ice bucket?", a: "Yes. Our beverage labels use wet-strength adhesives that maintain adhesion even when submerged in ice water. We test all beverage labels for ice bucket resistance." },
+      { q: "Can you produce wrap-around labels for cylindrical bottles?", a: "Yes. We produce wrap-around labels for all standard bottle diameters. Please provide your bottle dimensions and we will calculate the exact label size." },
+      { q: "What is the no-label look and is it suitable for beverages?", a: "The no-label look uses a clear BOPP substrate with back-printing. It is very popular for premium water, spirits, and craft beverage brands for a clean, minimalist aesthetic." },
+      { q: "Do you offer metallic labels for premium beverage brands?", a: "Yes. We offer gold, silver, and holographic metallic BOPP labels that create a striking visual impact for premium and luxury beverage brands." },
+      { q: "Can you match our existing label colors exactly?", a: "Yes. We use PANTONE color matching on our 7-color flexo press to ensure exact color consistency with your existing labels or brand guidelines." },
+    ],
   },
   {
     slug: "wine-spirits-labels",
@@ -131,6 +217,23 @@ const industryProducts = [
       "Low MOQ from 500 rolls per design",
     ],
     industries: ["Wine", "Whisky & Bourbon", "Vodka & Gin", "Craft Beer", "Liqueur"],
+    specs: {
+      moq: "500 rolls / design",
+      leadTime: "7–10 business days",
+      sampleTime: "3–5 business days",
+      printColors: "Up to 7 colors (CMYK + spot)",
+      minSize: "30mm × 50mm",
+      maxSize: "200mm × 300mm",
+      coreSize: "76mm (3\") standard",
+      windDirection: "Inside or outside wind",
+    },
+    faqs: [
+      { q: "What paper stocks do you offer for wine labels?", a: "We offer a wide range of premium paper stocks including textured laid paper, uncoated natural paper, metallic paper, and high-gloss coated paper. We can source specific paper grades upon request." },
+      { q: "Can you produce front labels, back labels, and neck labels in the same order?", a: "Yes. We can produce all label components for a wine or spirits bottle in a single order, ensuring consistent printing quality and color matching across all labels." },
+      { q: "Do you offer wet-strength paper for wine labels?", a: "Yes. We offer wet-strength paper options that maintain their integrity when exposed to moisture and ice bucket conditions, essential for wine and spirits labels." },
+      { q: "What foil colors are available for foil stamping?", a: "We offer a wide range of foil colors including gold, silver, rose gold, copper, holographic, and custom colors. We can also produce multi-foil labels with different foil colors in a single pass." },
+      { q: "Can you produce labels for craft distilleries with small batch sizes?", a: "Yes. Our minimum order quantity of 500 rolls is well-suited for craft distilleries and small-batch spirits producers. We also offer digital short-run printing for even smaller quantities." },
+    ],
   },
   {
     slug: "supplement-labels",
@@ -152,6 +255,23 @@ const industryProducts = [
       "Low MOQ from 500 rolls per design",
     ],
     industries: ["Vitamins", "Protein Supplements", "Herbal Products", "Sports Nutrition", "Probiotics"],
+    specs: {
+      moq: "500 rolls / design",
+      leadTime: "7–10 business days",
+      sampleTime: "3–5 business days",
+      printColors: "Up to 7 colors (CMYK + spot)",
+      minSize: "20mm × 30mm",
+      maxSize: "200mm × 300mm",
+      coreSize: "76mm (3\") standard",
+      windDirection: "Inside or outside wind",
+    },
+    faqs: [
+      { q: "Are your supplement labels GMP compliant?", a: "Our materials are GMP-compatible and we use food-safe inks and adhesives. We can provide material safety data sheets and certificates of compliance for GMP audits." },
+      { q: "Can you print lot numbers and expiry dates on each label?", a: "Yes. We offer variable data printing where each label carries a unique lot number and expiry date, essential for supplement traceability and compliance." },
+      { q: "What adhesive do you recommend for HDPE supplement bottles?", a: "We recommend our high-tack permanent adhesive for HDPE and PP supplement bottles. This adhesive provides strong initial tack and long-term adhesion on low-energy plastic surfaces." },
+      { q: "Can you produce tamper-evident labels for supplements?", a: "Yes. We offer tamper-evident label options including void labels and destructible labels that provide visible evidence of tampering." },
+      { q: "Do you offer extended content labels (ECL) for supplements?", a: "Yes. We produce booklet labels and extended content labels for supplements with complex ingredient lists and multi-language requirements." },
+    ],
   },
   {
     slug: "pet-food-labels",
@@ -173,6 +293,23 @@ const industryProducts = [
       "Low MOQ from 500 rolls per design",
     ],
     industries: ["Dry Pet Food", "Wet Pet Food", "Pet Treats", "Pet Care Products"],
+    specs: {
+      moq: "500 rolls / design",
+      leadTime: "7–10 business days",
+      sampleTime: "3–5 business days",
+      printColors: "Up to 7 colors (CMYK + spot)",
+      minSize: "30mm × 50mm",
+      maxSize: "200mm × 300mm",
+      coreSize: "76mm (3\") standard",
+      windDirection: "Inside or outside wind",
+    },
+    faqs: [
+      { q: "Can your labels adhere to flexible pet food pouches?", a: "Yes. We use high-tack adhesives specifically formulated for flexible packaging materials including LDPE, LLDPE, and metallized films used in pet food pouches." },
+      { q: "Are your materials safe for pet food contact?", a: "Yes. We use FDA-compliant, food-safe materials for all pet food labels. Our inks and adhesives meet safety standards for indirect food contact." },
+      { q: "Can you produce labels for both dry food bags and wet food cans?", a: "Yes. We can produce labels for all pet food packaging formats including dry food bags, wet food cans, treat pouches, and rigid containers in a single order." },
+      { q: "Do you offer moisture-resistant labels for refrigerated pet food?", a: "Yes. Our moisture-resistant BOPP film labels with wet-strength adhesives are suitable for refrigerated and chilled pet food products." },
+      { q: "Can you print detailed nutritional information on pet food labels?", a: "Yes. Our 7-color flexo press can print detailed nutritional tables, ingredient lists, and barcodes with excellent legibility on pet food labels." },
+    ],
   },
   {
     slug: "household-labels",
@@ -194,6 +331,23 @@ const industryProducts = [
       "Low MOQ from 500 rolls per design",
     ],
     industries: ["Cleaning Products", "Detergents", "Disinfectants", "Air Fresheners", "Personal Care"],
+    specs: {
+      moq: "500 rolls / design",
+      leadTime: "7–10 business days",
+      sampleTime: "3–5 business days",
+      printColors: "Up to 7 colors (CMYK + spot)",
+      minSize: "20mm × 30mm",
+      maxSize: "200mm × 300mm",
+      coreSize: "76mm (3\") standard",
+      windDirection: "Inside or outside wind",
+    },
+    faqs: [
+      { q: "Can your labels withstand exposure to cleaning chemicals?", a: "Yes. Our household labels use chemical-resistant adhesives and film substrates that maintain adhesion and print quality when exposed to common cleaning chemicals and detergents." },
+      { q: "Do you produce GHS-compliant hazard communication labels?", a: "Yes. We produce GHS/CLP-compliant labels with the required hazard pictograms, signal words, and hazard statements for hazardous household products." },
+      { q: "What adhesive do you recommend for HDPE cleaning product bottles?", a: "We recommend our high-tack permanent adhesive for HDPE and PP cleaning product containers. This adhesive provides strong initial tack and long-term adhesion." },
+      { q: "Can you produce labels that resist abrasion and scratching?", a: "Yes. Our laminated film labels with gloss or matte lamination provide excellent abrasion resistance, protecting the print quality throughout the product's life." },
+      { q: "Do you offer waterproof labels for bathroom and kitchen products?", a: "Yes. All our BOPP and PET film labels are inherently waterproof, making them ideal for bathroom, kitchen, and other wet environment applications." },
+    ],
   },
   {
     slug: "automotive-labels",
@@ -215,6 +369,23 @@ const industryProducts = [
       "Low MOQ from 500 rolls per design",
     ],
     industries: ["Engine Oils", "Lubricants", "Automotive Parts", "Fluids & Additives"],
+    specs: {
+      moq: "500 rolls / design",
+      leadTime: "7–10 business days",
+      sampleTime: "3–5 business days",
+      printColors: "Up to 7 colors (CMYK + spot)",
+      minSize: "20mm × 30mm",
+      maxSize: "200mm × 300mm",
+      coreSize: "76mm (3\") standard",
+      windDirection: "Inside or outside wind",
+    },
+    faqs: [
+      { q: "What temperature range can your automotive labels withstand?", a: "Our standard automotive labels are rated to 100°C. For higher temperature applications, we offer polyimide (Kapton) labels rated to 300°C." },
+      { q: "Can your labels adhere to metal engine components?", a: "Yes. We offer specialized adhesives with strong adhesion to metal, painted surfaces, and powder-coated finishes used in automotive applications." },
+      { q: "Are your labels resistant to engine oils and lubricants?", a: "Yes. Our automotive labels use oil-resistant adhesives and substrates that maintain adhesion and print quality when exposed to engine oils, lubricants, and hydraulic fluids." },
+      { q: "Do you offer UV-resistant labels for outdoor automotive applications?", a: "Yes. Our UV-resistant labels are suitable for outdoor automotive applications including under-hood labels, exterior identification labels, and outdoor equipment." },
+      { q: "Can you produce labels for both the product container and the outer carton?", a: "Yes. We can produce labels for bottles, cans, drums, and outer cartons in a single order, ensuring consistent branding across all packaging." },
+    ],
   },
   {
     slug: "industrial-labels",
@@ -236,6 +407,23 @@ const industryProducts = [
       "Low MOQ from 500 rolls per design",
     ],
     industries: ["Chemicals", "Manufacturing", "Logistics", "Warehousing", "Oil & Gas"],
+    specs: {
+      moq: "500 rolls / design",
+      leadTime: "7–10 business days",
+      sampleTime: "3–5 business days",
+      printColors: "Up to 7 colors (CMYK + spot)",
+      minSize: "20mm × 30mm",
+      maxSize: "300mm × 400mm",
+      coreSize: "76mm (3\") standard",
+      windDirection: "Inside or outside wind",
+    },
+    faqs: [
+      { q: "Do your industrial labels comply with GHS hazard communication standards?", a: "Yes. We produce GHS/CLP-compliant labels with all required hazard pictograms, signal words, and hazard statements for industrial chemical products." },
+      { q: "What is the maximum temperature your industrial labels can withstand?", a: "Our standard PET film labels are rated to 150°C. For higher temperature applications, we offer polyimide labels rated to 300°C and aluminum foil labels for extreme heat environments." },
+      { q: "Can you produce large-format labels for drums and IBC containers?", a: "Yes. We can produce labels up to 300mm × 400mm for drums, IBC containers, and large industrial packaging." },
+      { q: "Do you offer outdoor-rated labels for industrial equipment?", a: "Yes. Our UV-resistant labels with aggressive adhesives are suitable for outdoor industrial equipment, machinery, and infrastructure." },
+      { q: "Can you produce tamper-evident labels for industrial products?", a: "Yes. We offer tamper-evident and void labels for industrial products requiring security and anti-tampering features." },
+    ],
   },
   {
     slug: "electronics-labels",
@@ -243,7 +431,7 @@ const industryProducts = [
     title: "Electronics & Battery Labels",
     subtitle: "Precision labels for electronics, devices, and batteries",
     desc: "High-precision labels for electronics, batteries, cables, and electronic components.",
-    longDesc: "Electronics labels require exceptional precision, small-format printing capability, and materials that meet electronics industry standards. INKO produces high-quality electronics labels with serialized variable data, barcodes, and QR codes for traceability.",
+    longDesc: "Electronics labels require exceptional precision, anti-static properties, and compliance with RoHS and other electronics industry standards. INKO produces high-precision electronics labels with variable data printing for serialization and traceability.",
     tags: ["PRECISION", "VARIABLE DATA", "SMALL FORMAT", "ANTI-STATIC"],
     img: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80",
     materials: ["PET Film", "White BOPP", "Polyimide", "Aluminum Foil"],
@@ -257,6 +445,23 @@ const industryProducts = [
       "Low MOQ from 500 rolls per design",
     ],
     industries: ["Consumer Electronics", "Batteries", "Cables & Accessories", "Electronic Components"],
+    specs: {
+      moq: "500 rolls / design",
+      leadTime: "7–10 business days",
+      sampleTime: "3–5 business days",
+      printColors: "Up to 7 colors (CMYK + spot)",
+      minSize: "10mm × 20mm",
+      maxSize: "150mm × 200mm",
+      coreSize: "76mm (3\") standard",
+      windDirection: "Inside or outside wind",
+    },
+    faqs: [
+      { q: "Are your electronics labels RoHS compliant?", a: "Yes. Our materials are RoHS-compliant and we can provide compliance documentation for electronics industry audits." },
+      { q: "Do you offer anti-static labels for sensitive electronic components?", a: "Yes. We offer anti-static label options with dissipative coatings for sensitive electronic components and assemblies." },
+      { q: "Can you print serialized QR codes and barcodes on electronics labels?", a: "Yes. We offer variable data printing with unique QR codes, barcodes, and serial numbers on each label for electronics traceability." },
+      { q: "What is the minimum label size for electronics applications?", a: "Our minimum label size is 10mm × 20mm for flexo printing and 8mm × 15mm for digital printing, suitable for small electronic components and batteries." },
+      { q: "Do you offer tamper-evident labels for electronics packaging?", a: "Yes. We produce void labels and destructible labels that provide visible evidence of tampering for electronics packaging and warranty seals." },
+    ],
   },
   {
     slug: "agricultural-labels",
@@ -278,6 +483,23 @@ const industryProducts = [
       "Low MOQ from 500 rolls per design",
     ],
     industries: ["Pesticides", "Fertilizers", "Seeds", "Garden Products", "Farm Supplies"],
+    specs: {
+      moq: "500 rolls / design",
+      leadTime: "7–10 business days",
+      sampleTime: "3–5 business days",
+      printColors: "Up to 7 colors (CMYK + spot)",
+      minSize: "30mm × 50mm",
+      maxSize: "200mm × 300mm",
+      coreSize: "76mm (3\") standard",
+      windDirection: "Inside or outside wind",
+    },
+    faqs: [
+      { q: "How long will your agricultural labels last outdoors?", a: "Our UV-resistant agricultural labels are rated for 3–5 years outdoor exposure under normal conditions. For longer-term applications, we offer enhanced UV-resistant constructions." },
+      { q: "Are your labels compliant with pesticide labeling regulations?", a: "We produce labels that meet the physical requirements for pesticide labeling. Please consult your regulatory advisor for specific compliance requirements in your market." },
+      { q: "Can your labels withstand rain and moisture in field conditions?", a: "Yes. Our weatherproof film labels with moisture-resistant adhesives maintain adhesion and print quality in rain and high-humidity field conditions." },
+      { q: "Do you offer labels for seed packets and small garden product containers?", a: "Yes. We can produce labels for seed packets, small garden product containers, and plant labels in a wide range of sizes and formats." },
+      { q: "Can you print regulatory warning text and hazard symbols on agricultural labels?", a: "Yes. We can print all required regulatory text, hazard symbols, and safety information on agricultural product labels with excellent legibility." },
+    ],
   },
 ];
 
@@ -303,6 +525,23 @@ const materialProducts = [
       "Low MOQ from 500 rolls per design",
     ],
     industries: ["Food & Beverage", "Cosmetics", "Retail", "Logistics", "General Products"],
+    specs: {
+      moq: "500 rolls / design",
+      leadTime: "7–10 business days",
+      sampleTime: "3–5 business days",
+      printColors: "Up to 7 colors (CMYK + spot)",
+      minSize: "20mm × 30mm",
+      maxSize: "200mm × 300mm",
+      coreSize: "76mm (3\") standard",
+      windDirection: "Inside or outside wind",
+    },
+    faqs: [
+      { q: "What is the difference between gloss and matte paper labels?", a: "Gloss paper labels have a shiny, reflective surface that makes colors appear more vibrant. Matte paper labels have a flat, non-reflective surface that gives a more sophisticated and premium look." },
+      { q: "Are paper labels waterproof?", a: "Standard paper labels are not waterproof. For wet environments, we recommend BOPP film labels. However, we can add a gloss or matte lamination to paper labels to improve moisture resistance." },
+      { q: "What is the most cost-effective label substrate?", a: "Coated paper is generally the most cost-effective label substrate for high-volume orders. Film substrates like BOPP cost slightly more but offer significantly better durability." },
+      { q: "Can paper labels be used for food products?", a: "Yes. Our paper labels use food-safe inks and adhesives suitable for food product labeling. For products in wet or refrigerated environments, we recommend film labels." },
+      { q: "What is the minimum order quantity for paper labels?", a: "Our standard MOQ is 500 rolls per design. For digital short-run printing, we can accommodate orders as low as 100 labels." },
+    ],
   },
   {
     slug: "kraft-labels",
@@ -324,6 +563,23 @@ const materialProducts = [
       "Low MOQ from 500 rolls per design",
     ],
     industries: ["Organic Food", "Craft Beverages", "Natural Cosmetics", "Artisan Products", "Eco Brands"],
+    specs: {
+      moq: "500 rolls / design",
+      leadTime: "7–10 business days",
+      sampleTime: "3–5 business days",
+      printColors: "Up to 7 colors (CMYK + spot)",
+      minSize: "20mm × 30mm",
+      maxSize: "200mm × 300mm",
+      coreSize: "76mm (3\") standard",
+      windDirection: "Inside or outside wind",
+    },
+    faqs: [
+      { q: "Are your kraft labels FSC certified?", a: "Yes. We offer FSC-certified kraft paper options for brands that require sustainable sourcing certification for their packaging materials." },
+      { q: "Can you print full-color graphics on kraft paper?", a: "Yes. We can print full-color graphics on kraft paper, although the natural brown color of the paper will affect the appearance of light colors. We recommend using a white ink underprint for accurate color reproduction." },
+      { q: "Are kraft labels suitable for food products?", a: "Yes. Our kraft labels use food-safe inks and adhesives suitable for food product labeling. However, kraft labels are not waterproof and are best suited for dry food products." },
+      { q: "Do you offer biodegradable and compostable label options?", a: "Yes. We offer biodegradable kraft paper labels with water-based inks and natural adhesives for brands seeking fully compostable packaging solutions." },
+      { q: "What finishes are available for kraft labels?", a: "We offer matte varnish, soft-touch matte lamination, and uncoated natural finishes for kraft labels. We do not recommend gloss lamination as it detracts from the natural aesthetic." },
+    ],
   },
   {
     slug: "bopp-labels",
@@ -345,6 +601,23 @@ const materialProducts = [
       "Low MOQ from 500 rolls per design",
     ],
     industries: ["Food & Beverage", "Cosmetics", "Household Products", "Pet Food", "Supplements"],
+    specs: {
+      moq: "500 rolls / design",
+      leadTime: "7–10 business days",
+      sampleTime: "3–5 business days",
+      printColors: "Up to 7 colors (CMYK + spot)",
+      minSize: "20mm × 30mm",
+      maxSize: "200mm × 300mm",
+      coreSize: "76mm (3\") standard",
+      windDirection: "Inside or outside wind",
+    },
+    faqs: [
+      { q: "What is BOPP and why is it the most popular label substrate?", a: "BOPP (Biaxially Oriented Polypropylene) is a plastic film that offers excellent moisture resistance, durability, and print quality. It is the most popular label substrate because it combines performance and cost-effectiveness." },
+      { q: "Is white BOPP suitable for food and beverage labels?", a: "Yes. White BOPP is FDA-compliant and widely used for food and beverage labels. It offers excellent moisture resistance for refrigerated and wet environments." },
+      { q: "What finishes are available for white BOPP labels?", a: "We offer gloss lamination, matte lamination, soft-touch matte, and hot foil stamping on white BOPP labels. Soft-touch matte is particularly popular for premium cosmetic and supplement labels." },
+      { q: "Can white BOPP labels be used in freezer environments?", a: "Yes. With our freezer-grade adhesive option, white BOPP labels maintain adhesion at temperatures as low as -20°C for standard freezer applications." },
+      { q: "What is the difference between white BOPP and clear BOPP?", a: "White BOPP has a white opaque surface that provides a clean background for printing. Clear BOPP is transparent and creates the popular 'no-label look' effect on clear containers." },
+    ],
   },
   {
     slug: "clear-labels",
@@ -366,6 +639,23 @@ const materialProducts = [
       "Low MOQ from 500 rolls per design",
     ],
     industries: ["Premium Cosmetics", "Beverages", "Essential Oils", "Spirits", "Specialty Food"],
+    specs: {
+      moq: "500 rolls / design",
+      leadTime: "7–10 business days",
+      sampleTime: "3–5 business days",
+      printColors: "Up to 7 colors (CMYK + spot)",
+      minSize: "20mm × 30mm",
+      maxSize: "200mm × 300mm",
+      coreSize: "76mm (3\") standard",
+      windDirection: "Inside or outside wind",
+    },
+    faqs: [
+      { q: "What is the no-label look and how does it work?", a: "The no-label look uses a clear BOPP substrate. When applied to a clear glass or plastic container, the label appears to be printed directly on the container, creating a premium, minimalist aesthetic." },
+      { q: "What is back-printing and when should I use it?", a: "Back-printing (adhesive-side printing) places the ink between the label and the container surface, protecting the print from scratching and creating a perfect no-label look on clear containers." },
+      { q: "Can clear BOPP labels be used on colored glass bottles?", a: "Yes. Clear BOPP labels work on any transparent or translucent container. On colored glass, the label will take on the color of the glass, which can create a beautiful effect." },
+      { q: "Do clear labels need a white ink underprint?", a: "It depends on your design. If your design includes light colors or white elements, a white ink underprint is needed for accurate color reproduction. For designs with only dark colors, white underprint is optional." },
+      { q: "Are clear BOPP labels waterproof?", a: "Yes. Clear BOPP labels are inherently waterproof and moisture-resistant, making them suitable for beverages, cosmetics, and other wet environment applications." },
+    ],
   },
   {
     slug: "metallic-labels",
@@ -387,6 +677,23 @@ const materialProducts = [
       "Low MOQ from 500 rolls per design",
     ],
     industries: ["Luxury Cosmetics", "Spirits & Wine", "Premium Food", "Gift Products"],
+    specs: {
+      moq: "500 rolls / design",
+      leadTime: "7–10 business days",
+      sampleTime: "3–5 business days",
+      printColors: "Up to 7 colors (CMYK + spot)",
+      minSize: "20mm × 30mm",
+      maxSize: "200mm × 300mm",
+      coreSize: "76mm (3\") standard",
+      windDirection: "Inside or outside wind",
+    },
+    faqs: [
+      { q: "What metallic finishes are available?", a: "We offer gold, silver, and holographic metallic BOPP substrates. We can also apply hot foil stamping on top of metallic substrates for additional luxury effects." },
+      { q: "Can you print full-color graphics on metallic labels?", a: "Yes. We can print full-color graphics on metallic substrates, although the metallic background will show through transparent areas of the design, creating a unique effect." },
+      { q: "Are metallic labels suitable for food and beverage products?", a: "Yes. Our metallic BOPP labels are FDA-compliant and moisture-resistant, making them suitable for food, beverage, and cosmetic applications." },
+      { q: "What is the difference between metallic BOPP and foil stamping?", a: "Metallic BOPP is a metallic film substrate that covers the entire label. Foil stamping applies a thin metallic foil to specific areas of the label, allowing for more precise and detailed metallic effects." },
+      { q: "Do holographic labels require special printing techniques?", a: "Holographic BOPP can be printed with standard flexo printing. The holographic effect comes from the substrate itself, not the printing. We recommend using transparent or translucent inks to allow the holographic effect to show through." },
+    ],
   },
   {
     slug: "pe-film-labels",
@@ -408,6 +715,23 @@ const materialProducts = [
       "Low MOQ from 500 rolls per design",
     ],
     industries: ["Personal Care", "Cosmetics", "Household Products", "Food Condiments"],
+    specs: {
+      moq: "500 rolls / design",
+      leadTime: "7–10 business days",
+      sampleTime: "3–5 business days",
+      printColors: "Up to 7 colors (CMYK + spot)",
+      minSize: "20mm × 30mm",
+      maxSize: "200mm × 300mm",
+      coreSize: "76mm (3\") standard",
+      windDirection: "Inside or outside wind",
+    },
+    faqs: [
+      { q: "Why do I need PE film labels for squeezable bottles?", a: "Standard BOPP and PET labels are rigid and will crack or wrinkle when applied to squeezable containers. PE film labels are flexible and stretch with the container, maintaining a smooth appearance." },
+      { q: "What types of containers are PE film labels suitable for?", a: "PE film labels are suitable for squeezable LDPE bottles, flexible tubes, soft pouches, and any container that flexes or deforms during use." },
+      { q: "Can PE film labels be used for food products?", a: "Yes. Our PE film labels use FDA-compliant food-safe materials suitable for food contact applications including condiment bottles and food squeeze tubes." },
+      { q: "Are PE film labels waterproof?", a: "Yes. PE film is inherently waterproof and moisture-resistant, making PE film labels suitable for bathroom and kitchen applications." },
+      { q: "What adhesive do you recommend for PE film labels?", a: "We recommend our flexible adhesive formulation that maintains strong adhesion on LDPE and HDPE surfaces while accommodating the flexing of the container." },
+    ],
   },
   {
     slug: "pet-film-labels",
@@ -429,6 +753,23 @@ const materialProducts = [
       "Low MOQ from 500 rolls per design",
     ],
     industries: ["Industrial", "Electronics", "Automotive", "Chemical", "Pharmaceutical"],
+    specs: {
+      moq: "500 rolls / design",
+      leadTime: "7–10 business days",
+      sampleTime: "3–5 business days",
+      printColors: "Up to 7 colors (CMYK + spot)",
+      minSize: "10mm × 20mm",
+      maxSize: "200mm × 300mm",
+      coreSize: "76mm (3\") standard",
+      windDirection: "Inside or outside wind",
+    },
+    faqs: [
+      { q: "What is the difference between BOPP and PET film labels?", a: "PET film offers superior chemical resistance, dimensional stability, and temperature resistance compared to BOPP. PET is preferred for industrial, chemical, and electronics applications, while BOPP is more cost-effective for consumer product labels." },
+      { q: "Can PET labels withstand chemical exposure?", a: "Yes. PET film has excellent resistance to most chemicals, solvents, and acids, making it the preferred substrate for chemical and industrial product labels." },
+      { q: "Are PET labels suitable for outdoor applications?", a: "Yes. PET film with UV-resistant inks and lamination is suitable for outdoor applications with excellent resistance to UV degradation and weathering." },
+      { q: "What temperature range can PET labels withstand?", a: "Standard PET film labels are rated to 150°C. For higher temperature applications, we offer polyimide (Kapton) labels rated to 300°C." },
+      { q: "Can PET labels be used for pharmaceutical applications?", a: "Yes. PET film labels are widely used in pharmaceutical applications due to their chemical resistance, dimensional stability, and compatibility with sterilization processes." },
+    ],
   },
   {
     slug: "thermal-labels",
@@ -450,6 +791,23 @@ const materialProducts = [
       "Low MOQ from 500 rolls per design",
     ],
     industries: ["Logistics", "Retail", "Warehousing", "Manufacturing", "Healthcare"],
+    specs: {
+      moq: "500 rolls / design",
+      leadTime: "7–10 business days",
+      sampleTime: "3–5 business days",
+      printColors: "Up to 7 colors (CMYK + spot)",
+      minSize: "20mm × 30mm",
+      maxSize: "150mm × 200mm",
+      coreSize: "25mm / 40mm / 76mm",
+      windDirection: "Inside or outside wind",
+    },
+    faqs: [
+      { q: "What is the difference between direct thermal and thermal transfer labels?", a: "Direct thermal labels use heat-sensitive paper that darkens when heated by the print head. Thermal transfer labels use a ribbon to transfer ink onto the label surface. Thermal transfer labels are more durable and suitable for longer-term applications." },
+      { q: "Can you pre-print logos and static information on thermal labels?", a: "Yes. We can pre-print logos, company names, and static information on thermal labels using flexo printing, leaving the variable data area blank for on-demand thermal printing." },
+      { q: "What core sizes are available for thermal labels?", a: "We offer 25mm (1\"), 40mm (1.5\"), and 76mm (3\") core sizes to match your thermal printer specifications. Custom core sizes are also available." },
+      { q: "Are your thermal labels compatible with Zebra and Honeywell printers?", a: "Yes. Our thermal labels are compatible with all major thermal printer brands including Zebra, Honeywell, SATO, Datamax, and others." },
+      { q: "Do you offer top-coated thermal labels for better durability?", a: "Yes. Our top-coated thermal labels offer improved resistance to moisture, abrasion, and UV exposure compared to standard thermal labels." },
+    ],
   },
   {
     slug: "waterproof-labels",
@@ -471,6 +829,23 @@ const materialProducts = [
       "Low MOQ from 500 rolls per design",
     ],
     industries: ["Beverages", "Outdoor Products", "Marine", "Garden", "Industrial"],
+    specs: {
+      moq: "500 rolls / design",
+      leadTime: "7–10 business days",
+      sampleTime: "3–5 business days",
+      printColors: "Up to 7 colors (CMYK + spot)",
+      minSize: "20mm × 30mm",
+      maxSize: "200mm × 300mm",
+      coreSize: "76mm (3\") standard",
+      windDirection: "Inside or outside wind",
+    },
+    faqs: [
+      { q: "What makes a label truly waterproof?", a: "A truly waterproof label requires both a waterproof film substrate (BOPP, PET, or PE) and a water-resistant adhesive. Paper labels with lamination are water-resistant but not fully waterproof." },
+      { q: "Can your waterproof labels be used in ice buckets?", a: "Yes. Our waterproof labels with wet-strength adhesives maintain adhesion when submerged in ice water, suitable for beverage bottles and ice bucket applications." },
+      { q: "Are your waterproof labels suitable for outdoor use?", a: "Yes. Our waterproof labels with UV-resistant inks and lamination are suitable for outdoor applications with excellent resistance to rain, UV, and temperature fluctuations." },
+      { q: "Can waterproof labels be used in dishwashers?", a: "Our waterproof labels are suitable for hand washing and brief water exposure. For dishwasher-safe applications, please contact us for our specialized high-temperature waterproof label options." },
+      { q: "What is the difference between waterproof and water-resistant labels?", a: "Waterproof labels use film substrates that completely repel water. Water-resistant labels (such as laminated paper labels) resist moisture but may eventually absorb water in prolonged wet conditions." },
+    ],
   },
   {
     slug: "oil-resistant-labels",
@@ -492,6 +867,23 @@ const materialProducts = [
       "Low MOQ from 500 rolls per design",
     ],
     industries: ["Essential Oils", "Lubricants", "Automotive", "Industrial", "Food Processing"],
+    specs: {
+      moq: "500 rolls / design",
+      leadTime: "7–10 business days",
+      sampleTime: "3–5 business days",
+      printColors: "Up to 7 colors (CMYK + spot)",
+      minSize: "10mm × 20mm",
+      maxSize: "200mm × 300mm",
+      coreSize: "76mm (3\") standard",
+      windDirection: "Inside or outside wind",
+    },
+    faqs: [
+      { q: "Why do standard labels fail in oily environments?", a: "Standard adhesives lose their adhesion when contaminated with oil or grease. Our oil-resistant adhesives use specialized formulations that maintain strong adhesion even when the surface is contaminated with oils." },
+      { q: "What types of oils can your labels resist?", a: "Our oil-resistant labels are formulated to resist essential oils, mineral oils, lubricating oils, cooking oils, and most organic solvents." },
+      { q: "Are oil-resistant labels suitable for essential oil bottles?", a: "Yes. Our oil-resistant labels are specifically designed for essential oil bottles, where oil contamination on the bottle surface is common." },
+      { q: "Can oil-resistant labels be used in food processing environments?", a: "Yes. Our food-safe oil-resistant labels are suitable for food processing environments where labels may be exposed to cooking oils and food-grade lubricants." },
+      { q: "Do oil-resistant labels look different from standard labels?", a: "No. Oil-resistant labels look identical to standard labels. The oil resistance comes from the adhesive formulation, not the label face material." },
+    ],
   },
   {
     slug: "freezer-labels",
@@ -513,6 +905,23 @@ const materialProducts = [
       "Low MOQ from 500 rolls per design",
     ],
     industries: ["Frozen Food", "Ice Cream", "Pharmaceutical", "Biotech", "Cold Chain"],
+    specs: {
+      moq: "500 rolls / design",
+      leadTime: "7–10 business days",
+      sampleTime: "3–5 business days",
+      printColors: "Up to 7 colors (CMYK + spot)",
+      minSize: "20mm × 30mm",
+      maxSize: "200mm × 300mm",
+      coreSize: "76mm (3\") standard",
+      windDirection: "Inside or outside wind",
+    },
+    faqs: [
+      { q: "What temperature can your freezer labels withstand?", a: "Our standard freezer labels are rated to -20°C for standard freezer applications. Our cryogenic-grade labels are rated to -40°C for deep freeze and cold chain applications." },
+      { q: "Can freezer labels be applied to already-frozen surfaces?", a: "Our standard freezer labels should be applied at room temperature before freezing. For application to already-frozen surfaces, please contact us for our specialized freeze-on adhesive options." },
+      { q: "Will freezer labels fall off when the product is removed from the freezer?", a: "No. Our freezer labels maintain adhesion through freeze-thaw cycles. The condensation that forms when a frozen product warms up will not cause the label to fall off." },
+      { q: "Are freezer labels suitable for pharmaceutical cold chain applications?", a: "Yes. Our cryogenic-grade labels are suitable for pharmaceutical cold chain applications including frozen biologics, vaccines, and laboratory samples." },
+      { q: "Can you print lot numbers and expiry dates on freezer labels?", a: "Yes. We offer variable data printing for lot numbers, expiry dates, and other variable information on freezer labels." },
+    ],
   },
   {
     slug: "chemical-resistant-labels",
@@ -534,6 +943,23 @@ const materialProducts = [
       "Low MOQ from 500 rolls per design",
     ],
     industries: ["Industrial Chemicals", "Cleaning Products", "Pharmaceutical", "Laboratory", "Oil & Gas"],
+    specs: {
+      moq: "500 rolls / design",
+      leadTime: "7–10 business days",
+      sampleTime: "3–5 business days",
+      printColors: "Up to 7 colors (CMYK + spot)",
+      minSize: "30mm × 50mm",
+      maxSize: "300mm × 400mm",
+      coreSize: "76mm (3\") standard",
+      windDirection: "Inside or outside wind",
+    },
+    faqs: [
+      { q: "What chemicals can your chemical-resistant labels withstand?", a: "Our chemical-resistant labels are formulated to resist acids, bases, alcohols, ketones, and most organic solvents. Please contact us with your specific chemical exposure requirements for a tailored recommendation." },
+      { q: "Do your chemical labels comply with GHS hazard communication standards?", a: "Yes. We produce GHS/CLP-compliant labels with all required hazard pictograms, signal words, and hazard statements for chemical products." },
+      { q: "Can you produce labels for large drums and IBC containers?", a: "Yes. We can produce labels up to 300mm × 400mm for drums, IBC containers, and large chemical packaging." },
+      { q: "What substrate do you recommend for the most demanding chemical environments?", a: "For the most demanding chemical environments, we recommend polyimide (Kapton) or PET film with aggressive chemical-resistant adhesives." },
+      { q: "Do your chemical labels maintain adhesion after immersion in chemicals?", a: "Our chemical-resistant labels are designed to maintain adhesion during normal chemical exposure. For immersion applications, please contact us for our specialized immersion-grade label options." },
+    ],
   },
   {
     slug: "high-temp-labels",
@@ -555,6 +981,23 @@ const materialProducts = [
       "Low MOQ from 500 rolls per design",
     ],
     industries: ["Electronics Manufacturing", "Automotive", "Aerospace", "Industrial", "Medical Devices"],
+    specs: {
+      moq: "500 rolls / design",
+      leadTime: "7–10 business days",
+      sampleTime: "3–5 business days",
+      printColors: "Up to 7 colors (CMYK + spot)",
+      minSize: "10mm × 20mm",
+      maxSize: "200mm × 300mm",
+      coreSize: "76mm (3\") standard",
+      windDirection: "Inside or outside wind",
+    },
+    faqs: [
+      { q: "What is the maximum temperature your high-temp labels can withstand?", a: "Our polyimide (Kapton) labels are rated to 300°C for continuous use and up to 400°C for short-term exposure. Our high-temp PET labels are rated to 150°C." },
+      { q: "Are your high-temp labels autoclave-safe?", a: "Yes. Our polyimide labels with silicone adhesives are autoclave-safe and can withstand steam sterilization at 121°C and 134°C." },
+      { q: "Can high-temp labels withstand thermal cycling?", a: "Yes. Our high-temp labels are designed to maintain adhesion and print quality through repeated thermal cycling from ambient to maximum rated temperature." },
+      { q: "What printing methods are available for high-temp labels?", a: "We use specialized high-temperature inks for polyimide labels that maintain their color and legibility at elevated temperatures. Standard inks are not suitable for high-temp applications." },
+      { q: "Can you produce small-format high-temp labels for electronics components?", a: "Yes. We can produce high-temp labels as small as 10mm × 20mm for electronics components, PCBs, and other small-format applications." },
+    ],
   },
   {
     slug: "high-tack-labels",
@@ -576,6 +1019,23 @@ const materialProducts = [
       "Low MOQ from 500 rolls per design",
     ],
     industries: ["Supplements", "Pet Food", "Industrial", "Automotive", "Household Products"],
+    specs: {
+      moq: "500 rolls / design",
+      leadTime: "7–10 business days",
+      sampleTime: "3–5 business days",
+      printColors: "Up to 7 colors (CMYK + spot)",
+      minSize: "20mm × 30mm",
+      maxSize: "200mm × 300mm",
+      coreSize: "76mm (3\") standard",
+      windDirection: "Inside or outside wind",
+    },
+    faqs: [
+      { q: "When do I need high-tack labels instead of standard labels?", a: "High-tack labels are needed when standard adhesives fail to bond properly. Common applications include LDPE and PP plastic containers, recycled materials, rough or textured surfaces, and cold or damp application environments." },
+      { q: "Can high-tack labels be removed without leaving residue?", a: "High-tack labels are designed for permanent applications and are difficult to remove cleanly. If you need a removable option, please consider our removable label products." },
+      { q: "What surfaces are high-tack labels suitable for?", a: "High-tack labels are suitable for LDPE, LLDPE, PP, HDPE, recycled plastics, rough cardboard, textured surfaces, and other difficult-to-bond substrates." },
+      { q: "Are high-tack labels suitable for outdoor applications?", a: "Yes. Combined with UV-resistant inks and lamination, high-tack labels provide excellent long-term adhesion for outdoor applications." },
+      { q: "Do high-tack labels work in cold environments?", a: "Our high-tack adhesives maintain strong adhesion at temperatures down to -10°C. For colder environments, please consider our freezer-grade label options." },
+    ],
   },
   {
     slug: "removable-labels",
@@ -597,6 +1057,23 @@ const materialProducts = [
       "Low MOQ from 500 rolls per design",
     ],
     industries: ["Retail Promotions", "Food Service", "Logistics", "Events", "Cosmetics"],
+    specs: {
+      moq: "500 rolls / design",
+      leadTime: "7–10 business days",
+      sampleTime: "3–5 business days",
+      printColors: "Up to 7 colors (CMYK + spot)",
+      minSize: "20mm × 30mm",
+      maxSize: "200mm × 300mm",
+      coreSize: "76mm (3\") standard",
+      windDirection: "Inside or outside wind",
+    },
+    faqs: [
+      { q: "Will removable labels leave adhesive residue when removed?", a: "Our removable labels use specially formulated low-tack adhesives that remove cleanly from most surfaces without leaving adhesive residue, even after extended application." },
+      { q: "How long can removable labels stay applied before becoming difficult to remove?", a: "Our removable labels can typically be removed cleanly after up to 6 months of application at room temperature. Extended application in hot environments may reduce removability." },
+      { q: "Are removable labels suitable for glass bottles?", a: "Yes. Our removable labels are suitable for glass, plastic, and metal surfaces. They are popular for promotional labels on glass bottles and jars." },
+      { q: "Can removable labels be repositioned after application?", a: "Our standard removable labels can be removed and reapplied once. For fully repositionable labels, please contact us for our repositionable adhesive options." },
+      { q: "Are removable labels as durable as permanent labels?", a: "Removable labels have the same print quality and durability as permanent labels. The only difference is the adhesive formulation, which allows clean removal." },
+    ],
   },
   {
     slug: "tamper-evident-labels",
@@ -618,6 +1095,23 @@ const materialProducts = [
       "Low MOQ from 500 rolls per design",
     ],
     industries: ["Pharmaceutical", "Food & Beverage", "Electronics", "Cosmetics", "Automotive"],
+    specs: {
+      moq: "500 rolls / design",
+      leadTime: "7–10 business days",
+      sampleTime: "3–5 business days",
+      printColors: "Up to 7 colors (CMYK + spot)",
+      minSize: "20mm × 30mm",
+      maxSize: "150mm × 200mm",
+      coreSize: "76mm (3\") standard",
+      windDirection: "Inside or outside wind",
+    },
+    faqs: [
+      { q: "How do tamper-evident labels work?", a: "Tamper-evident labels use specialized materials that leave visible evidence of removal. VOID labels reveal a 'VOID' pattern when removed. Destructible labels break apart when removal is attempted, making reapplication impossible." },
+      { q: "What is the difference between VOID labels and destructible labels?", a: "VOID labels reveal a 'VOID' or 'OPENED' pattern on both the label and the surface when removed. Destructible labels physically break apart when removal is attempted, making them impossible to remove in one piece." },
+      { q: "Are tamper-evident labels suitable for pharmaceutical products?", a: "Yes. Our tamper-evident labels are widely used in pharmaceutical applications for product security and compliance with regulatory requirements for tamper-evident packaging." },
+      { q: "Can you add holographic elements for anti-counterfeiting?", a: "Yes. We offer holographic tamper-evident labels with custom holographic patterns that are difficult to replicate, providing an additional layer of anti-counterfeiting protection." },
+      { q: "Do tamper-evident labels work on all surface types?", a: "Our tamper-evident labels work on most smooth surfaces including glass, plastic, and metal. Performance may vary on rough or textured surfaces." },
+    ],
   },
   {
     slug: "resealable-labels",
@@ -639,6 +1133,23 @@ const materialProducts = [
       "Low MOQ from 500 rolls per design",
     ],
     industries: ["Wet Wipes", "Baby Care", "Personal Care", "Cleaning Products", "Medical"],
+    specs: {
+      moq: "500 rolls / design",
+      leadTime: "10–14 business days",
+      sampleTime: "5–7 business days",
+      printColors: "Up to 7 colors (CMYK + spot)",
+      minSize: "50mm × 70mm",
+      maxSize: "200mm × 300mm",
+      coreSize: "76mm (3\") standard",
+      windDirection: "Inside or outside wind",
+    },
+    faqs: [
+      { q: "How many times can a resealable label be opened and resealed?", a: "Our resealable labels are designed for 50–100 open/reseal cycles while maintaining an effective moisture seal. Performance depends on the specific product and usage conditions." },
+      { q: "Can resealable labels maintain a hermetic moisture seal?", a: "Our resealable labels provide an effective moisture seal that significantly slows moisture loss between uses. They are not designed for hermetic sealing of highly moisture-sensitive products." },
+      { q: "What is the minimum size for resealable labels?", a: "Our minimum size for resealable labels is 50mm × 70mm to accommodate the resealable flap mechanism. Custom sizes and flap configurations are available." },
+      { q: "Are resealable labels suitable for baby wipes?", a: "Yes. Our resealable labels are widely used for baby wipes and other baby care products. We use materials that comply with baby product safety standards." },
+      { q: "Can you print on both the base label and the resealable flap?", a: "Yes. We can print full-color graphics on both the base label and the resealable flap, allowing for maximum branding and information display." },
+    ],
   },
   {
     slug: "barcode-labels",
@@ -660,6 +1171,23 @@ const materialProducts = [
       "Low MOQ from 500 rolls per design",
     ],
     industries: ["Logistics", "Retail", "Pharmaceutical", "Food & Beverage", "Electronics"],
+    specs: {
+      moq: "500 rolls / design",
+      leadTime: "7–10 business days",
+      sampleTime: "3–5 business days",
+      printColors: "Up to 7 colors (CMYK + spot)",
+      minSize: "20mm × 30mm",
+      maxSize: "150mm × 200mm",
+      coreSize: "76mm (3\") standard",
+      windDirection: "Inside or outside wind",
+    },
+    faqs: [
+      { q: "What barcode formats do you support?", a: "We support all major barcode formats including Code 128, Code 39, EAN-13, EAN-8, UPC-A, UPC-E, QR Code, Data Matrix, PDF417, and GS1 DataBar." },
+      { q: "Can each label in a roll have a unique barcode or serial number?", a: "Yes. We offer variable data printing where each label carries a unique barcode, serial number, QR code, or other variable information for traceability and serialization." },
+      { q: "What is the minimum barcode size for reliable scanning?", a: "The minimum barcode size depends on the barcode type and scanning distance. We recommend a minimum X-dimension of 0.25mm for Code 128 and a minimum module size of 0.35mm for QR codes." },
+      { q: "Do your barcodes comply with GS1 standards?", a: "Yes. We produce GS1-compliant barcodes for retail, logistics, and pharmaceutical applications. We can provide a GS1 compliance certificate upon request." },
+      { q: "Can you combine variable barcodes with fixed full-color graphics?", a: "Yes. We can combine fixed full-color flexo-printed graphics with variable digital-printed barcodes and data in a single label, providing both visual appeal and traceability." },
+    ],
   },
   {
     slug: "roll-labels",
@@ -681,6 +1209,23 @@ const materialProducts = [
       "Low MOQ from 500 rolls per design",
     ],
     industries: ["All Industries"],
+    specs: {
+      moq: "500 rolls / design",
+      leadTime: "7–10 business days",
+      sampleTime: "3–5 business days",
+      printColors: "Up to 7 colors (CMYK + spot)",
+      minSize: "10mm × 20mm",
+      maxSize: "300mm × 400mm",
+      coreSize: "25mm / 40mm / 76mm",
+      windDirection: "Inside or outside wind",
+    },
+    faqs: [
+      { q: "What roll specifications do I need to provide?", a: "Please provide: label size (width × height), core size (25mm, 40mm, or 76mm), wind direction (inside or outside), labels per roll, and maximum roll outer diameter to match your labeling machine." },
+      { q: "What is the difference between inside wind and outside wind?", a: "Inside wind means the label face is on the inside of the roll (facing the core). Outside wind means the label face is on the outside. The correct wind direction depends on your labeling machine." },
+      { q: "Can you match the roll specifications of my current label supplier?", a: "Yes. If you provide us with a sample roll from your current supplier, we can match all specifications including label size, core size, wind direction, and labels per roll." },
+      { q: "What is the maximum roll outer diameter you can produce?", a: "Our standard maximum roll outer diameter is 300mm. Custom roll sizes up to 400mm are available for high-volume production." },
+      { q: "Can you produce labels in sheets instead of rolls?", a: "Yes. We can produce labels in sheet format for manual application or sheet-fed labeling machines. Please specify your sheet size and label layout requirements." },
+    ],
   },
   {
     slug: "short-run-labels",
@@ -702,90 +1247,232 @@ const materialProducts = [
       "Easy reorder with no minimum quantity increase",
     ],
     industries: ["Startups", "New Product Launches", "Seasonal Products", "Test Markets"],
+    specs: {
+      moq: "100 labels (digital) / 500 rolls (flexo)",
+      leadTime: "3–5 business days (digital)",
+      sampleTime: "2–3 business days",
+      printColors: "Full color (CMYK)",
+      minSize: "20mm × 30mm",
+      maxSize: "150mm × 200mm",
+      coreSize: "76mm (3\") standard",
+      windDirection: "Inside or outside wind",
+    },
+    faqs: [
+      { q: "What is the minimum order quantity for digital short-run labels?", a: "Our minimum order quantity for digital short-run labels is 100 labels per design. There are no plate setup costs, making digital printing cost-effective for small quantities." },
+      { q: "How does digital printing quality compare to flexo printing?", a: "Digital printing offers excellent color accuracy and fine detail reproduction, comparable to flexo printing for most applications. For very high-volume orders, flexo printing is more cost-effective." },
+      { q: "Can I order samples before committing to a full production run?", a: "Yes. We offer a sample service where you can order a small quantity of labels (as few as 100) to test the design, material, and adhesive before placing a full production order." },
+      { q: "Is there a setup cost for digital short-run labels?", a: "No. Digital printing has no plate setup costs, making it ideal for small quantities, multiple designs, and frequent design changes." },
+      { q: "Can I switch from digital to flexo printing as my volume grows?", a: "Yes. We can transition your label production from digital to flexo printing as your order volume increases, providing a seamless scaling path from startup to high-volume production." },
+    ],
   },
 ];
 
 // ─── All products combined ────────────────────────────────────────────────────
 const allProducts = [...industryProducts, ...materialProducts];
 
+// ─── FAQ Accordion Item ───────────────────────────────────────────────────────
+function FaqItem({ q, a }: { q: string; a: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="border-b border-gray-200 last:border-0">
+      <button
+        className="w-full flex items-center justify-between py-4 text-left gap-4"
+        onClick={() => setOpen(!open)}
+      >
+        <span className="font-semibold text-[#0F2744] text-sm">{q}</span>
+        {open ? (
+          <Minus className="w-4 h-4 text-[#E8A020] flex-shrink-0" />
+        ) : (
+          <Plus className="w-4 h-4 text-[#E8A020] flex-shrink-0" />
+        )}
+      </button>
+      {open && (
+        <p className="text-gray-600 text-sm leading-relaxed pb-4">{a}</p>
+      )}
+    </div>
+  );
+}
+
 export default function ProductDetailPage({ params }: { params: { slug: string } }) {
   const product = allProducts.find((p) => p.slug === params.slug);
   if (!product) notFound();
 
   const Icon = product.icon;
+  const relatedProducts = allProducts.filter(p => p.slug !== product.slug).slice(0, 6);
 
   return (
     <>
-      {/* Hero */}
-      <section className="bg-[#0F2744] pt-32 pb-16">
+      {/* ── Hero ─────────────────────────────────────────────────────────── */}
+      <section className="bg-[#0F2744] pt-32 pb-0 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-2 text-white/50 text-sm mb-4">
+          {/* Breadcrumb */}
+          <div className="flex items-center gap-2 text-white/50 text-sm mb-6">
             <Link href="/products" className="hover:text-[#E8A020] transition-colors">Products</Link>
             <ChevronRight className="w-3.5 h-3.5" />
             <span className="text-white/80">{product.title}</span>
           </div>
-          <div className="inline-flex items-center gap-2 bg-[#E8A020]/20 text-[#E8A020] text-xs font-bold tracking-widest uppercase px-3 py-1.5 rounded mb-4">
-            <Icon className="w-3.5 h-3.5" />
-            {product.subtitle}
-          </div>
-          <h1 className="font-display text-6xl font-black text-white uppercase leading-tight mb-4" style={{ fontFamily: "var(--font-barlow)" }}>
-            {product.title}
-          </h1>
-          <p className="text-white/70 max-w-2xl text-lg mb-6">{product.desc}</p>
-          <div className="flex flex-wrap gap-2 mb-8">
-            {product.tags.map((tag) => (
-              <span key={tag} className="bg-white/10 text-white/80 text-xs font-bold tracking-wider px-3 py-1 rounded">{tag}</span>
-            ))}
-          </div>
-          <div className="flex flex-wrap gap-4">
-            <Link href="/contact" className="inline-flex items-center gap-2 bg-[#E8A020] hover:bg-[#d4911c] text-[#0F2744] font-bold px-8 py-4 rounded text-sm uppercase tracking-wide transition-all duration-200 hover:scale-[1.02]" style={{ fontFamily: "var(--font-barlow)" }}>
-              REQUEST FREE SAMPLE & QUOTE <ChevronRight className="w-4 h-4" />
-            </Link>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-end">
+            {/* Left: Text */}
+            <div className="pb-16">
+              <div className="inline-flex items-center gap-2 bg-[#E8A020]/20 text-[#E8A020] text-xs font-bold tracking-widest uppercase px-3 py-1.5 rounded mb-5">
+                <Icon className="w-3.5 h-3.5" />
+                {product.subtitle}
+              </div>
+              <h1 className="font-display text-5xl lg:text-6xl font-black text-white uppercase leading-tight mb-5" style={{ fontFamily: "var(--font-barlow)" }}>
+                {product.title}
+              </h1>
+              <p className="text-white/70 text-lg mb-6 leading-relaxed">{product.desc}</p>
+              <div className="flex flex-wrap gap-2 mb-8">
+                {product.tags.map((tag) => (
+                  <span key={tag} className="bg-white/10 text-white/80 text-xs font-bold tracking-wider px-3 py-1.5 rounded">{tag}</span>
+                ))}
+              </div>
+              <div className="flex flex-wrap gap-4">
+                <Link href="/contact" className="inline-flex items-center gap-2 bg-[#E8A020] hover:bg-[#d4911c] text-[#0F2744] font-bold px-8 py-4 rounded text-sm uppercase tracking-wide transition-all duration-200 hover:scale-[1.02]" style={{ fontFamily: "var(--font-barlow)" }}>
+                  REQUEST FREE SAMPLE <ChevronRight className="w-4 h-4" />
+                </Link>
+                <Link href="/contact" className="inline-flex items-center gap-2 border border-white/30 hover:border-white text-white font-bold px-8 py-4 rounded text-sm uppercase tracking-wide transition-all duration-200">
+                  GET A QUOTE
+                </Link>
+              </div>
+            </div>
+
+            {/* Right: Hero Image */}
+            <div className="relative h-[420px] lg:h-[480px] rounded-t-2xl overflow-hidden">
+              <Image
+                src={product.img}
+                alt={product.title}
+                fill
+                className="object-cover object-center"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0F2744]/40 to-transparent" />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Content */}
-      <section className="py-16 bg-white">
+      {/* ── Trust Bar ────────────────────────────────────────────────────── */}
+      <section className="bg-[#E8A020] py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            {/* Image */}
-            <div className="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-xl">
-              <Image src={product.img} alt={product.title} fill className="object-cover" />
-            </div>
-            {/* Details */}
-            <div>
-              <h2 className="font-display text-3xl font-black text-[#0F2744] uppercase mb-4" style={{ fontFamily: "var(--font-barlow)" }}>
-                Why Choose INKO for {product.title}?
-              </h2>
-              <p className="text-gray-600 leading-relaxed mb-8">{product.longDesc}</p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+            {[
+              { icon: Award, label: "ISO 9001 Certified" },
+              { icon: Clock, label: "24h Quote Response" },
+              { icon: Truck, label: "DHL / FedEx Worldwide" },
+              { icon: Headphones, label: "Dedicated Account Manager" },
+            ].map(({ icon: TrustIcon, label }) => (
+              <div key={label} className="flex items-center justify-center gap-2">
+                <TrustIcon className="w-4 h-4 text-[#0F2744]" />
+                <span className="text-[#0F2744] text-xs font-bold uppercase tracking-wide">{label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-              <h3 className="font-bold text-[#0F2744] text-sm uppercase tracking-widest mb-3">Key Features</h3>
-              <ul className="space-y-2 mb-8">
-                {product.features.map((f) => (
-                  <li key={f} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-4 h-4 text-[#E8A020] flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-600 text-sm">{f}</span>
-                  </li>
-                ))}
-              </ul>
+      {/* ── Main Content ─────────────────────────────────────────────────── */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
+            {/* Left: Description + Features */}
+            <div className="lg:col-span-2 space-y-12">
+              {/* Why Choose INKO */}
+              <div>
+                <h2 className="font-display text-3xl font-black text-[#0F2744] uppercase mb-4" style={{ fontFamily: "var(--font-barlow)" }}>
+                  Why Choose INKO for {product.title}?
+                </h2>
+                <p className="text-gray-600 leading-relaxed text-base">{product.longDesc}</p>
+              </div>
 
-              <div className="grid grid-cols-2 gap-6">
+              {/* Key Features */}
+              <div>
+                <h3 className="font-bold text-[#0F2744] text-sm uppercase tracking-widest mb-4">Key Features</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {product.features.map((f) => (
+                    <div key={f} className="flex items-start gap-3 bg-gray-50 rounded-lg p-3">
+                      <CheckCircle2 className="w-4 h-4 text-[#E8A020] flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700 text-sm">{f}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Materials & Finishes */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                 <div>
-                  <h3 className="font-bold text-[#0F2744] text-sm uppercase tracking-widest mb-3">Materials</h3>
+                  <h3 className="font-bold text-[#0F2744] text-sm uppercase tracking-widest mb-3">Available Materials</h3>
                   <div className="flex flex-wrap gap-2">
                     {product.materials.map((m) => (
-                      <span key={m} className="bg-[#0F2744]/5 text-[#0F2744] text-xs font-medium px-3 py-1 rounded">{m}</span>
+                      <span key={m} className="bg-[#0F2744]/5 border border-[#0F2744]/10 text-[#0F2744] text-xs font-medium px-3 py-1.5 rounded-full">{m}</span>
                     ))}
                   </div>
                 </div>
                 <div>
-                  <h3 className="font-bold text-[#0F2744] text-sm uppercase tracking-widest mb-3">Finishes</h3>
+                  <h3 className="font-bold text-[#0F2744] text-sm uppercase tracking-widest mb-3">Available Finishes</h3>
                   <div className="flex flex-wrap gap-2">
                     {product.finishes.map((f) => (
-                      <span key={f} className="bg-[#E8A020]/10 text-[#0F2744] text-xs font-medium px-3 py-1 rounded">{f}</span>
+                      <span key={f} className="bg-[#E8A020]/10 border border-[#E8A020]/20 text-[#0F2744] text-xs font-medium px-3 py-1.5 rounded-full">{f}</span>
                     ))}
                   </div>
+                </div>
+              </div>
+
+              {/* FAQ */}
+              <div>
+                <h2 className="font-display text-2xl font-black text-[#0F2744] uppercase mb-6" style={{ fontFamily: "var(--font-barlow)" }}>
+                  Frequently Asked Questions
+                </h2>
+                <div className="bg-gray-50 rounded-xl p-6">
+                  {product.faqs.map((faq) => (
+                    <FaqItem key={faq.q} q={faq.q} a={faq.a} />
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Right: Specs Card + CTA */}
+            <div className="space-y-6">
+              {/* Specs Card */}
+              <div className="bg-[#0F2744] rounded-2xl p-6 text-white sticky top-24">
+                <h3 className="font-display text-lg font-black uppercase mb-5 text-[#E8A020]" style={{ fontFamily: "var(--font-barlow)" }}>
+                  Product Specifications
+                </h3>
+                <div className="space-y-3">
+                  {[
+                    { label: "Min. Order Qty", value: product.specs.moq },
+                    { label: "Lead Time", value: product.specs.leadTime },
+                    { label: "Sample Time", value: product.specs.sampleTime },
+                    { label: "Print Colors", value: product.specs.printColors },
+                    { label: "Min. Label Size", value: product.specs.minSize },
+                    { label: "Max. Label Size", value: product.specs.maxSize },
+                    { label: "Core Size", value: product.specs.coreSize },
+                    { label: "Wind Direction", value: product.specs.windDirection },
+                  ].map(({ label, value }) => (
+                    <div key={label} className="flex justify-between items-start gap-2 py-2 border-b border-white/10 last:border-0">
+                      <span className="text-white/60 text-xs">{label}</span>
+                      <span className="text-white text-xs font-semibold text-right">{value}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-6 space-y-3">
+                  <Link href="/contact" className="block w-full text-center bg-[#E8A020] hover:bg-[#d4911c] text-[#0F2744] font-bold px-6 py-3 rounded text-sm uppercase tracking-wide transition-all duration-200" style={{ fontFamily: "var(--font-barlow)" }}>
+                    Request Free Sample
+                  </Link>
+                  <Link href="/contact" className="block w-full text-center border border-white/30 hover:border-white text-white font-bold px-6 py-3 rounded text-sm uppercase tracking-wide transition-all duration-200">
+                    Get a Quote
+                  </Link>
+                </div>
+              </div>
+
+              {/* Industries */}
+              <div className="bg-gray-50 rounded-2xl p-6">
+                <h3 className="font-bold text-[#0F2744] text-sm uppercase tracking-widest mb-4">Industries We Serve</h3>
+                <div className="flex flex-wrap gap-2">
+                  {product.industries.map((ind) => (
+                    <span key={ind} className="bg-white border border-gray-200 text-[#0F2744] text-xs font-medium px-3 py-1.5 rounded-full shadow-sm">{ind}</span>
+                  ))}
                 </div>
               </div>
             </div>
@@ -793,33 +1480,32 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
         </div>
       </section>
 
-      {/* Industries */}
-      <section className="py-12 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-display text-2xl font-black text-[#0F2744] uppercase mb-6" style={{ fontFamily: "var(--font-barlow)" }}>Industries We Serve</h2>
-          <div className="flex flex-wrap gap-3 justify-center mb-10">
-            {product.industries.map((ind) => (
-              <span key={ind} className="bg-white border border-gray-200 text-[#0F2744] text-sm font-medium px-4 py-2 rounded-full shadow-sm">{ind}</span>
-            ))}
-          </div>
-          <Link href="/contact" className="inline-flex items-center gap-2 bg-[#E8A020] hover:bg-[#d4911c] text-[#0F2744] font-bold px-10 py-4 rounded text-sm uppercase tracking-wide transition-all duration-200 hover:scale-[1.02]" style={{ fontFamily: "var(--font-barlow)" }}>
-            REQUEST FREE SAMPLE <ChevronRight className="w-4 h-4" />
-          </Link>
-        </div>
-      </section>
-
-      {/* Related */}
-      <section className="py-12 bg-white border-t border-gray-100">
+      {/* ── Related Products ─────────────────────────────────────────────── */}
+      <section className="py-16 bg-gray-50 border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-display text-2xl font-black text-[#0F2744] uppercase mb-6" style={{ fontFamily: "var(--font-barlow)" }}>View All Products</h2>
-          <div className="flex flex-wrap gap-3">
-            {allProducts.slice(0, 8).filter(p => p.slug !== product.slug).map((p) => (
-              <Link key={p.slug} href={`/products/${p.slug}`} className="bg-gray-50 hover:bg-[#0F2744] hover:text-white text-[#0F2744] text-sm font-medium px-4 py-2 rounded transition-all duration-200 border border-gray-200 hover:border-[#0F2744]">
-                {p.title}
-              </Link>
-            ))}
-            <Link href="/products" className="bg-[#0F2744] text-white text-sm font-medium px-4 py-2 rounded border border-[#0F2744]">
-              View All 40+ →
+          <h2 className="font-display text-2xl font-black text-[#0F2744] uppercase mb-8" style={{ fontFamily: "var(--font-barlow)" }}>
+            You May Also Be Interested In
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            {relatedProducts.map((p) => {
+              const RelIcon = p.icon;
+              return (
+                <Link
+                  key={p.slug}
+                  href={`/products/${p.slug}`}
+                  className="group bg-white rounded-xl p-4 border border-gray-200 hover:border-[#E8A020] hover:shadow-md transition-all duration-200 flex flex-col items-center text-center gap-3"
+                >
+                  <div className="w-10 h-10 bg-[#0F2744]/5 group-hover:bg-[#E8A020]/10 rounded-full flex items-center justify-center transition-colors">
+                    <RelIcon className="w-5 h-5 text-[#0F2744] group-hover:text-[#E8A020] transition-colors" />
+                  </div>
+                  <span className="text-[#0F2744] text-xs font-semibold leading-tight">{p.title}</span>
+                </Link>
+              );
+            })}
+          </div>
+          <div className="mt-6 text-center">
+            <Link href="/products" className="inline-flex items-center gap-2 text-[#E8A020] font-bold text-sm uppercase tracking-wide hover:underline">
+              View All 40+ Products <ChevronRight className="w-4 h-4" />
             </Link>
           </div>
         </div>

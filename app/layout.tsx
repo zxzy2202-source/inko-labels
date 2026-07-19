@@ -68,6 +68,11 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://inkolabels.com",
+    languages: {
+      "en": "https://inkolabels.com",
+      "es": "https://inkolabels.com/es",
+      "x-default": "https://inkolabels.com",
+    },
   },
   verification: {
     google: "google-site-verification-placeholder",

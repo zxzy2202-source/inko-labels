@@ -41,6 +41,7 @@ const blogSlugs = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  // ── English (default) static pages ──────────────────────────────────────
   const staticPages: MetadataRoute.Sitemap = [
     { url: BASE_URL, lastModified: new Date(), changeFrequency: "weekly", priority: 1.0 },
     { url: `${BASE_URL}/products`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
@@ -52,6 +53,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/terms`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
   ];
 
+  // ── Spanish (/es) static pages ───────────────────────────────────────────
+  const esStaticPages: MetadataRoute.Sitemap = [
+    { url: `${BASE_URL}/es`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.95 },
+    { url: `${BASE_URL}/es/products`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.85 },
+    { url: `${BASE_URL}/es/about`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE_URL}/es/contact`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.85 },
+  ];
+
+  // ── English dynamic pages ────────────────────────────────────────────────
   const productPages: MetadataRoute.Sitemap = productSlugs.map((slug) => ({
     url: `${BASE_URL}/products/${slug}`,
     lastModified: new Date(),
@@ -80,5 +90,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticPages, ...productPages, ...solutionPages, ...capabilityPages, ...blogPages];
+  // ── Spanish (/es) dynamic product pages ─────────────────────────────────
+  const esProductPages: MetadataRoute.Sitemap = productSlugs.map((slug) => ({
+    url: `${BASE_URL}/es/products/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.75,
+  }));
+
+  return [
+    ...staticPages,
+    ...esStaticPages,
+    ...productPages,
+    ...solutionPages,
+    ...capabilityPages,
+    ...blogPages,
+    ...esProductPages,
+  ];
 }

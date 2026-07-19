@@ -138,9 +138,15 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [active, setActive] = useState<DropKey>(null);
-  const [lang, setLang] = useState(languages[0]);
   const pathname = usePathname();
   const isHome = pathname === "/";
+
+  // Detect current locale from pathname
+  const currentLocale = ["es","fr","pt","de","ru","ja","ar"].find(l => pathname.startsWith(`/${l}`)) || "en";
+  const lang = languages.find(l => l.code === currentLocale) || languages[0];
+
+  // Get the path without locale prefix
+  const pathWithoutLocale = currentLocale === "en" ? pathname : pathname.replace(`/${currentLocale}`, "") || "/";
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -249,7 +255,11 @@ export default function Navbar() {
               <div className={`absolute top-full right-0 mt-2 w-52 bg-white rounded-xl shadow-2xl shadow-black/10 border border-gray-100 py-2 transition-all duration-200 ease-out origin-top-right ${active === "lang" ? "opacity-100 scale-100 translate-y-0 pointer-events-auto" : "opacity-0 scale-95 -translate-y-2 pointer-events-none"}`}>
                 <div className="px-3 py-1.5 text-[10px] font-bold text-gray-400 tracking-widest uppercase border-b border-gray-100 mb-1">Select Language</div>
                 {languages.map(l => (
-                  <button key={l.code} onClick={() => { setLang(l); close(); }}
+                  <button key={l.code} onClick={() => {
+                    const targetPath = l.code === "en" ? (pathWithoutLocale || "/") : `/${l.code}${pathWithoutLocale === "/" ? "" : pathWithoutLocale}`;
+                    window.location.href = targetPath;
+                    close();
+                  }}
                     className={`w-full flex items-center gap-3 px-3 py-2 text-sm transition-all duration-150 ${lang.code === l.code ? "bg-amber-50 text-[#0F2744] font-semibold" : "text-gray-600 hover:bg-amber-50 hover:text-[#0F2744]"}`}>
                     <span className="text-lg w-6 text-center">{l.flag}</span>
                     <div className="text-left">

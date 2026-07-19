@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ChevronRight, Clock, Tag, ArrowLeft } from "lucide-react";
-import { posts } from "../page";
+import { posts } from "@/lib/blog-data";
 import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
@@ -112,4 +112,3 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
     </>
   );
 }
-

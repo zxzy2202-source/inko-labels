@@ -16,12 +16,12 @@ const stats = [
 ];
 
 const products = [
-  { icon: Sparkles, title: "Cosmetic & Skincare Labels", desc: "Foil stamping, soft-touch matte, embossed, spot UV for premium beauty brands.", tags: ["FOIL STAMPING","SOFT TOUCH","EMBOSSED"], href: "/products/cosmetic-labels", img: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&q=80" },
-  { icon: Droplets, title: "Essential Oil Labels", desc: "Oil-resistant, solvent-resistant labels for essential oils and aromatherapy.", tags: ["OIL-RESISTANT","SOLVENT-RESISTANT","LUXURY"], href: "/products/essential-oil-labels", img: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=600&q=80" },
-  { icon: Apple, title: "Food Packaging Labels", desc: "FDA-compliant labels for food products, sauces, condiments and specialty foods.", tags: ["FDA COMPLIANT","WATERPROOF","FREEZER-SAFE"], href: "/products/food-labels", img: "https://images.unsplash.com/photo-1606914501449-5a96b6ce24ca?w=600&q=80" },
-  { icon: Pill, title: "Supplement Labels", desc: "GMP-compliant supplement and nutraceutical labels with precise color matching.", tags: ["GMP COMPLIANT","HIGH-TACK","VARIABLE DATA"], href: "/products/supplement-labels", img: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&q=80" },
-  { icon: PawPrint, title: "Pet Food & Pet Care Labels", desc: "Durable, moisture-resistant labels for dry food bags, wet food cans and treats.", tags: ["MOISTURE-RESISTANT","HIGH-TACK","BOPP FILM"], href: "/products/pet-food-labels", img: "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=600&q=80" },
-  { icon: Factory, title: "Industrial & Chemical Labels", desc: "Chemical-resistant, high-temperature labels for industrial and automotive use.", tags: ["CHEMICAL-RESISTANT","HIGH-TEMP","DURABLE"], href: "/products/industrial-labels", img: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&q=80" },
+  { icon: Sparkles, title: "Cosmetic & Skincare Labels", desc: "Foil stamping, soft-touch matte, embossed, spot UV for premium beauty brands.", tags: ["FOIL STAMPING","SOFT TOUCH","EMBOSSED"], href: "/products/cosmetic-labels", img: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&q=80", aiImg: "/manus-storage/product-cosmetic-labels_3696937e.jpg" },
+  { icon: Droplets, title: "Essential Oil Labels", desc: "Oil-resistant, solvent-resistant labels for essential oils and aromatherapy.", tags: ["OIL-RESISTANT","SOLVENT-RESISTANT","LUXURY"], href: "/products/essential-oil-labels", img: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=600&q=80", aiImg: "/manus-storage/product-essential-oil-labels_ba7458ab.jpg" },
+  { icon: Apple, title: "Food Packaging Labels", desc: "FDA-compliant labels for food products, sauces, condiments and specialty foods.", tags: ["FDA COMPLIANT","WATERPROOF","FREEZER-SAFE"], href: "/products/food-labels", img: "https://images.unsplash.com/photo-1606914501449-5a96b6ce24ca?w=600&q=80", aiImg: "/manus-storage/product-food-labels_1701c8ab.jpg" },
+  { icon: Pill, title: "Supplement Labels", desc: "GMP-compliant supplement and nutraceutical labels with precise color matching.", tags: ["GMP COMPLIANT","HIGH-TACK","VARIABLE DATA"], href: "/products/supplement-labels", img: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&q=80", aiImg: "/manus-storage/product-supplement-labels_0b224cc0.jpg" },
+  { icon: PawPrint, title: "Pet Food & Pet Care Labels", desc: "Durable, moisture-resistant labels for dry food bags, wet food cans and treats.", tags: ["MOISTURE-RESISTANT","HIGH-TACK","BOPP FILM"], href: "/products/pet-food-labels", img: "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=600&q=80", aiImg: "/manus-storage/product-petfood-labels_ecc6466e.jpg" },
+  { icon: Factory, title: "Industrial & Chemical Labels", desc: "Chemical-resistant, high-temperature labels for industrial and automotive use.", tags: ["CHEMICAL-RESISTANT","HIGH-TEMP","DURABLE"], href: "/products/industrial-labels", img: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&q=80", aiImg: "/manus-storage/product-industrial-labels_6294141b.jpg" },
 ];
 
 const whyUs = [
@@ -45,8 +45,9 @@ export default function HomePage() {
       <section className="relative min-h-screen flex items-center overflow-hidden">
         <Image src="/hero-banner.jpg" alt="INKO Custom Labels Factory" fill className="object-cover" priority />
         <div className="absolute inset-0 bg-gradient-to-r from-[#0F2744]/90 via-[#0F2744]/70 to-transparent" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
-          <div className="max-w-2xl">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 mb-6">
               <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
               <span className="text-white/90 text-xs font-medium tracking-wider uppercase">B2B Custom Label Manufacturer · China</span>
@@ -68,6 +69,35 @@ export default function HomePage() {
                 <div key={t} className="flex items-center gap-1.5"><CheckCircle2 className="w-4 h-4 text-[#E8A020]" />{t}</div>
               ))}
             </div>
+          </div>
+          {/* Hero Right: Product Showcase */}
+          <div className="hidden lg:block relative">
+            <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+              <Image
+                src="/manus-storage/hero-labels-showcase_bfe5db00.jpg"
+                alt="INKO Premium Label Products Showcase"
+                fill
+                className="object-cover"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0F2744]/40 to-transparent" />
+              {/* Floating badge */}
+              <div className="absolute bottom-4 left-4 right-4 flex gap-3">
+                <div className="bg-[#E8A020] text-[#0F2744] font-bold text-xs px-3 py-1.5 rounded-full uppercase tracking-wide">7-Color Flexo</div>
+                <div className="bg-white/20 backdrop-blur-sm text-white font-bold text-xs px-3 py-1.5 rounded-full uppercase tracking-wide border border-white/30">Foil Stamping</div>
+                <div className="bg-white/20 backdrop-blur-sm text-white font-bold text-xs px-3 py-1.5 rounded-full uppercase tracking-wide border border-white/30">Low MOQ</div>
+              </div>
+            </div>
+            {/* Floating stat cards */}
+            <div className="absolute -top-4 -right-4 bg-[#E8A020] rounded-xl p-4 shadow-xl">
+              <div className="text-3xl font-black text-[#0F2744]" style={{ fontFamily: "var(--font-barlow)" }}>60+</div>
+              <div className="text-[#0F2744]/70 text-xs font-medium uppercase tracking-wide">Countries</div>
+            </div>
+            <div className="absolute -bottom-4 -left-4 bg-[#0F2744] border border-white/20 rounded-xl p-4 shadow-xl">
+              <div className="text-3xl font-black text-white" style={{ fontFamily: "var(--font-barlow)" }}>500</div>
+              <div className="text-white/60 text-xs font-medium uppercase tracking-wide">Min. Order</div>
+            </div>
+          </div>
           </div>
         </div>
       </section>
@@ -99,7 +129,7 @@ export default function HomePage() {
               return (
                 <Link key={p.href} href={p.href} className="group bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                   <div className="relative h-48 overflow-hidden">
-                    <Image src={p.img} alt={p.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <Image src={p.aiImg || p.img} alt={p.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0F2744]/60 to-transparent" />
                     <div className="absolute top-4 left-4 w-9 h-9 rounded-lg bg-[#E8A020] flex items-center justify-center">
                       <Icon className="w-5 h-5 text-[#0F2744]" />
@@ -153,7 +183,7 @@ export default function HomePage() {
               <Link href="/about" className="inline-flex items-center gap-2 bg-[#0F2744] hover:bg-[#1a3a5c] text-white font-bold px-6 py-3 rounded text-sm uppercase tracking-wide transition-all duration-200" style={{ fontFamily: "var(--font-barlow)" }}>Learn More <ChevronRight className="w-4 h-4" /></Link>
             </div>
             <div className="relative h-96 lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
-              <Image src="/factory.jpg" alt="INKO Factory" fill className="object-cover" />
+              <Image src="/manus-storage/factory-production-line_3b0322fe.jpg" alt="INKO Factory Xi'an China" fill className="object-cover" />
             </div>
           </div>
         </div>
@@ -167,10 +197,13 @@ export default function HomePage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {testimonials.map(t => (
-              <div key={t.name} className="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+              <div key={t.name} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-300">
                 <div className="flex gap-1 mb-4">{Array.from({ length: t.rating }).map((_, i) => <Star key={i} className="w-4 h-4 fill-[#E8A020] text-[#E8A020]" />)}</div>
                 <p className="text-gray-700 text-sm leading-relaxed mb-4 italic">&ldquo;{t.text}&rdquo;</p>
-                <div><div className="font-bold text-[#0F2744] text-sm">{t.name}</div><div className="text-gray-500 text-xs">{t.company}</div></div>
+                <div className="flex items-center gap-3 pt-3 border-t border-gray-100">
+                  <div className="w-8 h-8 rounded-full bg-[#E8A020]/20 flex items-center justify-center text-[#E8A020] font-bold text-sm">{t.name[0]}</div>
+                  <div><div className="font-bold text-[#0F2744] text-sm">{t.name}</div><div className="text-gray-500 text-xs">{t.company}</div></div>
+                </div>
               </div>
             ))}
           </div>
